@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class spawner : MonoBehaviour
@@ -16,10 +14,10 @@ public class spawner : MonoBehaviour
     {
         xWalls = GameManager.leftRightWall - 0.1f;
         yWalls = GameManager.topBottom - 0.1f;
-  
+
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         targetTime -= Time.deltaTime;
         
@@ -31,6 +29,8 @@ public class spawner : MonoBehaviour
             positionSpawnX = Random.Range(-xWalls, xWalls);
             positionSpawnY = Random.Range(-yWalls, yWalls);
 
+            Debug.Log(xWalls + " " + yWalls);
+
             //rigth
             if (randomDirection == 0)
             {
@@ -39,7 +39,6 @@ public class spawner : MonoBehaviour
             //bottom
             else if (randomDirection == 1)
             {
-
                 GameObject.Instantiate(enemy, new Vector3(positionSpawnX, -yWalls, 0), this.transform.rotation);
             }
             //top

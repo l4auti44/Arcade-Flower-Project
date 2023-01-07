@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
 
     private void spawnWalls()
     {
+
+        //TODO: automatic adjust the length of walls
         if (bordersList.Length == 3)
         {
             borders.Add("leftRight", bordersList[0]);
