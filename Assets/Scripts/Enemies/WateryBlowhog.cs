@@ -19,17 +19,11 @@ public class WateryBlowhog : MonoBehaviour
         _shootTime = shootTime;
         splashRender = GameObject.Find("splash").GetComponent<SpriteRenderer>();
         splashCol = gameObject.GetComponent<BoxCollider2D>();
-        adjustCol();
         enableSplash();
-
-        transform.position = new Vector3(0f, GameManager.topBottom + transform.localScale.y / 2f, 0f);
+        transform.position = new Vector3(0f, GameManager.topBottom, 0f);
     }
 
-    private void adjustCol()
-    {
-        splashCol.offset = GameObject.Find("splash").transform.localPosition;
-        splashCol.size = GameObject.Find("splash").transform.localScale;
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -89,11 +83,5 @@ public class WateryBlowhog : MonoBehaviour
 
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-
-    }
-
 
 }

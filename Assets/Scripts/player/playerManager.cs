@@ -17,21 +17,20 @@ public class playerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
 
-        if (Input.GetKey(KeyCode.W) && gameObject.transform.position.y < GameManager.leftRightWall - transform.localScale.x)
+        if (Input.GetKey(KeyCode.W) && gameObject.transform.position.y < GameManager.topBottom)
         {
             this.transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.A) && gameObject.transform.position.x > -GameManager.leftRightWall + transform.localScale.x)
+        if (Input.GetKey(KeyCode.A) && gameObject.transform.position.x > -GameManager.leftRightWall)
         {
             this.transform.Translate(new Vector3(-velocity,0, 0) * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.D) && gameObject.transform.position.x < GameManager.topBottom - transform.localScale.x)
+        if (Input.GetKey(KeyCode.D) && gameObject.transform.position.x < GameManager.leftRightWall)
         {
             this.transform.Translate(new Vector3(velocity, 0, 0) * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.S) && gameObject.transform.position.y > -GameManager.topBottom + transform.localScale.x)
+        if (Input.GetKey(KeyCode.S) && gameObject.transform.position.y > -GameManager.topBottom + 0.3f)
         {
             this.transform.Translate(new Vector3(0, -velocity, 0) * Time.deltaTime);
         }
