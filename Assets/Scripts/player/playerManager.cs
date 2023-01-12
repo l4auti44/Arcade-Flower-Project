@@ -7,32 +7,36 @@ public class playerManager : MonoBehaviour
 
     public float velocity = 5f;
 
-
-    // Start is called before the first frame update
+    private SpriteRenderer playerSprite;
+    
+    
     void Start()
     {
-        
+        playerSprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
         if (Input.GetKey(KeyCode.W) && gameObject.transform.position.y < GameManager.topBottom)
         {
-            this.transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
+            transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
+            
         }
         if (Input.GetKey(KeyCode.A) && gameObject.transform.position.x > -GameManager.leftRightWall)
         {
-            this.transform.Translate(new Vector3(-velocity,0, 0) * Time.deltaTime);
+            transform.Translate(new Vector3(-velocity,0, 0) * Time.deltaTime);
+            playerSprite.flipX = false;
+            
         }
         if (Input.GetKey(KeyCode.D) && gameObject.transform.position.x < GameManager.leftRightWall)
         {
-            this.transform.Translate(new Vector3(velocity, 0, 0) * Time.deltaTime);
+            transform.Translate(new Vector3(velocity, 0, 0) * Time.deltaTime);
+            playerSprite.flipX = true;
         }
         if (Input.GetKey(KeyCode.S) && gameObject.transform.position.y > -GameManager.topBottom + 0.3f)
         {
-            this.transform.Translate(new Vector3(0, -velocity, 0) * Time.deltaTime);
+            transform.Translate(new Vector3(0, -velocity, 0) * Time.deltaTime);
         }
 
 

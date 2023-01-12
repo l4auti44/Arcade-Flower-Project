@@ -7,21 +7,19 @@ public class Bullet : MonoBehaviour
     public float speed = 3f;
     public float damage = 20f;
     
-    private float targetTime = 0.2f;
     private float offset;
     private int randomDirection;
     private float xWalls, yWalls;
     private float positionSpawnX, positionSpawnY;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
-        xWalls = GameManager.leftRightWall - 0.1f;
-        yWalls = GameManager.topBottom - 0.1f;
+        xWalls = GameManager.leftRightWall + 3f;
+        yWalls = GameManager.topBottom + 3f;
 
-        spawnDirection();
+        spawnPosition();
         setRotation();
-
 
     }
 
@@ -53,25 +51,25 @@ public class Bullet : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         
-
-        targetTime -= Time.deltaTime;
-
-
+       
         transform.Translate(new Vector3(1, 0, 0) * speed * Time.deltaTime);
+        
+        
 
 
         //Destroy out borders
-        if (gameObject.transform.position.y > GameManager.topBottom || gameObject.transform.position.y < -GameManager.topBottom  || gameObject.transform.position.x > GameManager.leftRightWall || gameObject.transform.position.x < -GameManager.leftRightWall)
+        if (gameObject.transform.position.y > yWalls + 0.1f || gameObject.transform.position.y < -yWalls - 0.1f
+            || gameObject.transform.position.x > xWalls + 0.1f || gameObject.transform.position.x < -xWalls - 0.1f)
         {
+            Debug.Log("destroy Bullet");
             GameObject.Destroy(this.gameObject);
         }
     }
 
-    private void spawnDirection()
+    private void spawnPosition()
     {
         randomDirection = Random.Range(0, 4);
 
