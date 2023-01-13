@@ -5,72 +5,70 @@ using UnityEngine;
 public class WateryBlowhog : MonoBehaviour
 {
 
-    public float shootTime = 2f;
+    public float startAtackAfter = 2f;
     public float lifeTime = 10f;
     public float damage = 40f;
-    private float _shootTime;
+    private float _startAtackAfter;
     private SpriteRenderer splashRender;
     private BoxCollider2D splashCol;
     private bool shooting = false;
 
     void Start()
     {
-        _shootTime = shootTime;
-        splashRender = GameObject.Find("splash").GetComponent<SpriteRenderer>();
-        splashCol = gameObject.GetComponent<BoxCollider2D>();
+        _startAtackAfter = startAtackAfter;
+        
         enableSplash();
         InvokeRepeating("FlipX", 0.5f, 0.5f);
-
-        
         spawnPosition();
     }
 
     private void spawnPosition()
     {
-        var randomX = UnityEngine.Random.Range(-GameManager.leftRightWall + 0.5f, GameManager.leftRightWall - 0.5f);
-        var randomY = UnityEngine.Random.Range(-GameManager.topBottom + 0.5f, GameManager.topBottom - 0.5f);
-        //transform.position = new Vector3(randomX, GameManager.topBottom + 1.5f, 0f);
+        var offset = 0.5f;
+        var randomX = UnityEngine.Random.Range(-GameManager.leftRightWall + offset, GameManager.leftRightWall - offset);
+        var randomY = UnityEngine.Random.Range(-GameManager.topBottom + offset, GameManager.topBottom - offset);
+        
+
         var randomWall = UnityEngine.Random.Range(0, 4);
+        switch (randomWall)
+        {
+            //top
+            case 0:
+                transform.position = new Vector3(randomX, GameManager.topBottom, 0f);
 
-        //top
-        if (randomWall == 0)
-        {
-            //transform.Rotate(new Vector3(0, 0, 270f));
-            transform.position = new Vector3(randomX, GameManager.topBottom + 1.5f, 0f);
-
-        }
-        //bottom
-        else if (randomWall == 1)
-        {
-            transform.Rotate(new Vector3(0, 0, 180f));
-            transform.position = new Vector3(randomX, -GameManager.topBottom - 1.5f, 0f);
-        }
-        //left
-        else if (randomWall == 2)
-        {
-            transform.Rotate(new Vector3(0, 0, 90f));
-            transform.position = new Vector3(-GameManager.leftRightWall - 1.5f, randomY, 0f);
-        }
-        //right
-        else
-        {
-            transform.Rotate(new Vector3(0, 0, 270f));
-            transform.position = new Vector3(GameManager.leftRightWall + 1.5f, randomY, 0f);
+                break;
+            //bottom
+            case 1:
+                transform.Rotate(new Vector3(0, 0, 180f));
+                transform.position = new Vector3(randomX, -GameManager.topBottom, 0f);
+                break; 
+            //left
+            case 2:
+                transform.Rotate(new Vector3(0, 0, 90f));
+                transform.position = new Vector3(-GameManager.leftRightWall, randomY, 0f);
+                break; 
+            //right
+            case 3:
+                transform.Rotate(new Vector3(0, 0, 270f));
+                transform.position = new Vector3(GameManager.leftRightWall, randomY, 0f);
+                break;
+            
         }
 
+       
 
     }
 
     void Update()
     {
-        _shootTime -= Time.deltaTime;
+        _startAtackAfter -= Time.deltaTime;
         lifeTime -= Time.deltaTime;
         //movingLeftRight();
 
-        if (_shootTime <= 0f)
+        if (_startAtackAfter <= 0f)
         {
             enableSplash();
-            _shootTime = shootTime;
+            _startAtackAfter = startAtackAfter;
         }
         if (lifeTime <= 0f)
         {
@@ -96,6 +94,9 @@ public class WateryBlowhog : MonoBehaviour
 
 
     private void enableSplash() {
+        splashRender = GameObject.Find("splash").GetComponent<SpriteRenderer>();
+        splashCol = gameObject.GetComponent<BoxCollider2D>();
+        
         if (splashRender.enabled == true)
         {
             splashCol.enabled = false;
@@ -115,6 +116,7 @@ public class WateryBlowhog : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            collision.gameObject.GetComponent<playerManager>().takingDamage();
             collision.gameObject.GetComponent<Health>().decreaseHealth(damage);
 
         }

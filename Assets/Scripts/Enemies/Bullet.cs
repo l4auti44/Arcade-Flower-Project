@@ -64,7 +64,6 @@ public class Bullet : MonoBehaviour
         if (gameObject.transform.position.y > yWalls + 0.1f || gameObject.transform.position.y < -yWalls - 0.1f
             || gameObject.transform.position.x > xWalls + 0.1f || gameObject.transform.position.x < -xWalls - 0.1f)
         {
-            Debug.Log("destroy Bullet");
             GameObject.Destroy(this.gameObject);
         }
     }
@@ -99,15 +98,13 @@ public class Bullet : MonoBehaviour
     }
 
 
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
+            collision.gameObject.GetComponent<playerManager>().takingDamage();
             collision.gameObject.GetComponent<Health>().decreaseHealth(damage);
             GameObject.Destroy(this.gameObject);
         }
-
     }
 }
