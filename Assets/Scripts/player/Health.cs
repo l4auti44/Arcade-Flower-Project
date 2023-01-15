@@ -34,6 +34,7 @@ public class Health : MonoBehaviour
         health -= damage;
         if (health <= 0f)
         {
+            health = 0f;
             die();
         }
         refreshText();

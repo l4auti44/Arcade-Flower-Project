@@ -2,21 +2,25 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class WateryBlowhog : MonoBehaviour
+public class WateryBlowhog : Enemy
 {
 
     public float startAtackAfter = 2f;
     public float lifeTime = 10f;
-    public float damage = 40f;
     private float _startAtackAfter;
     private SpriteRenderer splashRender;
     private BoxCollider2D splashCol;
     private bool shooting = false;
+    private ParticleSystem waterParticles;
 
     void Start()
     {
         _startAtackAfter = startAtackAfter;
-        
+
+        splashRender = GameObject.Find("splash").GetComponent<SpriteRenderer>();
+        splashCol = gameObject.GetComponent<BoxCollider2D>();
+        waterParticles = GameObject.Find("waterParticles").GetComponent<ParticleSystem>();
+        waterParticles.Stop();
         enableSplash();
         InvokeRepeating("FlipX", 0.5f, 0.5f);
         spawnPosition();
@@ -94,32 +98,23 @@ public class WateryBlowhog : MonoBehaviour
 
 
     private void enableSplash() {
-        splashRender = GameObject.Find("splash").GetComponent<SpriteRenderer>();
-        splashCol = gameObject.GetComponent<BoxCollider2D>();
+        
         
         if (splashRender.enabled == true)
         {
             splashCol.enabled = false;
             splashRender.enabled = false;
             shooting = false;
+            waterParticles.Stop();
         }
         else
         {
             splashCol.enabled = true;
             splashRender.enabled = true;
             shooting = true;
+            waterParticles.Play();
         }
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            collision.gameObject.GetComponent<playerManager>().takingDamage();
-            collision.gameObject.GetComponent<Health>().decreaseHealth(damage);
-
-        }
-    }
 
 }

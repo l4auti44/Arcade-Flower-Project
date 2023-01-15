@@ -7,15 +7,13 @@ public class GameManager : MonoBehaviour
 {
     private TextMeshProUGUI points;
     private float numberPoints;
-    private float time = 0f;
+    private float time = 1f;
     
 
     public float left_right, top_bottom;
     
     public static float leftRightWall;
     public static float topBottom;
-    
-
     
 
     // Start is called before the first frame update
@@ -26,18 +24,22 @@ public class GameManager : MonoBehaviour
         topBottom = top_bottom;
         points = GameObject.Find("points").GetComponent<TextMeshProUGUI>();
         numberPoints = 0;
-
+        points.text = "Points: " + numberPoints;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Time.fixedTime % 2 == 0)
+        time -= Time.deltaTime;
+
+        if (time <= 0)
         {
-            time += 1;
             numberPoints += 10;
             points.text = "Points: " + numberPoints;
+            time += 1;
         }
+        
+        
 
 
 

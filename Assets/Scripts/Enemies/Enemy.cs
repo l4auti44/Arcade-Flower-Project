@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
+    private float healtPoint;
+    [SerializeField] private float maxHealthPoint = 5f;
     public float damage = 5f;
-    // Start is called before the first frame update
+
+
+
     void Start()
     {
-        
+        healtPoint = maxHealthPoint;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {

@@ -2,10 +2,10 @@
 using UnityEngine;
 
 
-public class Bullet : MonoBehaviour
+public class Bullet : Enemy
 {
     public float speed = 3f;
-    public float damage = 20f;
+
     
     private float offset;
     private int randomDirection;
@@ -58,8 +58,6 @@ public class Bullet : MonoBehaviour
         transform.Translate(new Vector3(1, 0, 0) * speed * Time.deltaTime);
         
         
-
-
         //Destroy out borders
         if (gameObject.transform.position.y > yWalls + 0.1f || gameObject.transform.position.y < -yWalls - 0.1f
             || gameObject.transform.position.x > xWalls + 0.1f || gameObject.transform.position.x < -xWalls - 0.1f)
@@ -97,14 +95,11 @@ public class Bullet : MonoBehaviour
         }
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            collision.gameObject.GetComponent<playerManager>().takingDamage();
-            collision.gameObject.GetComponent<Health>().decreaseHealth(damage);
-            GameObject.Destroy(this.gameObject);
-        }
+        base.OnTriggerEnter2D(collision);
+        //CHANGE THIS WHEN ENEMY HEALTH SYSTEM IS IMPLEMENTED
+        Destroy(this.gameObject);
     }
+
 }

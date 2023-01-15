@@ -24,27 +24,8 @@ public class playerManager : MonoBehaviour
 
     void Update()
     {
+        Move();
 
-        if (Input.GetKey(KeyCode.W) && gameObject.transform.position.y < GameManager.topBottom - offset)
-        {
-            transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
-            
-        }
-        if (Input.GetKey(KeyCode.A) && gameObject.transform.position.x > -GameManager.leftRightWall + offset)
-        {
-            transform.Translate(new Vector3(-velocity,0, 0) * Time.deltaTime);
-            playerSprite.flipX = false;
-            
-        }
-        if (Input.GetKey(KeyCode.D) && gameObject.transform.position.x < GameManager.leftRightWall - offset)
-        {
-            transform.Translate(new Vector3(velocity, 0, 0) * Time.deltaTime);
-            playerSprite.flipX = true;
-        }
-        if (Input.GetKey(KeyCode.S) && gameObject.transform.position.y > -GameManager.topBottom + (offset * 2f))
-        {
-            transform.Translate(new Vector3(0, -velocity, 0) * Time.deltaTime);
-        }
 
         if (invincible)
         {
@@ -57,6 +38,30 @@ public class playerManager : MonoBehaviour
             }
         }
 
+    }
+
+    private void Move()
+    {
+        if (Input.GetKey(KeyCode.W) && gameObject.transform.position.y < GameManager.topBottom - offset)
+        {
+            transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
+
+        }
+        if (Input.GetKey(KeyCode.A) && gameObject.transform.position.x > -GameManager.leftRightWall + offset)
+        {
+            transform.Translate(new Vector3(-velocity, 0, 0) * Time.deltaTime);
+            playerSprite.flipX = false;
+            playerAnimator.SetBool("walking", true);
+        }
+        if (Input.GetKey(KeyCode.D) && gameObject.transform.position.x < GameManager.leftRightWall - offset)
+        {
+            transform.Translate(new Vector3(velocity, 0, 0) * Time.deltaTime);
+            playerSprite.flipX = true;
+        }
+        if (Input.GetKey(KeyCode.S) && gameObject.transform.position.y > -GameManager.topBottom + (offset * 2f))
+        {
+            transform.Translate(new Vector3(0, -velocity, 0) * Time.deltaTime);
+        }
 
     }
 

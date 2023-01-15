@@ -3,13 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnodeBeetle : MonoBehaviour
+public class AnodeBeetle : Enemy
 {
 
     private Transform mirror;
     public float destroyAfter = 5f;
     public float startAtackAfter = 2f;
-    public float damage = 30f;
     private float _destroyAfter, _startAtackAfter;
     private SpriteRenderer lightning;
     private BoxCollider2D coll;
@@ -95,14 +94,4 @@ public class AnodeBeetle : MonoBehaviour
 
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            collision.gameObject.GetComponent<playerManager>().takingDamage();
-            collision.gameObject.GetComponent<Health>().decreaseHealth(damage);
-
-        }
-    }
 }
