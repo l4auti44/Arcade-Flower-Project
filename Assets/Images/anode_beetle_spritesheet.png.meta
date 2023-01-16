@@ -120,12 +120,12 @@ TextureImporter:
       name: anode_beetle_spritesheet_0
       rect:
         serializedVersion: 2
-        x: 41
+        x: 37
         y: 101
-        width: 14
+        width: 22
         height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -141,12 +141,12 @@ TextureImporter:
       name: anode_beetle_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 73
+        x: 69
         y: 101
-        width: 14
+        width: 22
         height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -166,8 +166,8 @@ TextureImporter:
         y: 69
         width: 22
         height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -183,12 +183,12 @@ TextureImporter:
       name: anode_beetle_spritesheet_3
       rect:
         serializedVersion: 2
-        x: 41
+        x: 37
         y: 69
-        width: 14
+        width: 22
         height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -208,8 +208,8 @@ TextureImporter:
         y: 69
         width: 24
         height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.75}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,8 +229,8 @@ TextureImporter:
         y: 69
         width: 28
         height: 29
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.75}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -250,8 +250,8 @@ TextureImporter:
         y: 37
         width: 26
         height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -330,12 +330,12 @@ TextureImporter:
       name: anode_beetle_spritesheet_10
       rect:
         serializedVersion: 2
-        x: 5
+        x: 25
         y: 3
-        width: 118
+        width: 78
         height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -343,6 +343,48 @@ TextureImporter:
       bones: []
       spriteID: 2239f75eba1b9bd42b12993fc5e75310
       internalID: -1039325697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anode_beetle_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 3
+        width: 23
+        height: 26
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e41c0a2126752fb418f333ab67fd05a1
+      internalID: 1690069175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anode_beetle_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 3
+        width: 21
+        height: 26
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ced5871001288e945bc981a8a475781f
+      internalID: -44401281
       vertices: []
       indices: 
       edges: []
@@ -358,7 +400,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      anode_beetle_spritesheet_12: -44401281
       anode_beetle_spritesheet_6: 1984231620
+      anode_beetle_spritesheet_11: 1690069175
       anode_beetle_spritesheet_9: 1201501745
       anode_beetle_spritesheet_7: 1863091022
       anode_beetle_spritesheet_4: 2016725507

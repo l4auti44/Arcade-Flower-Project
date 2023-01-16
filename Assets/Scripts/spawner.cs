@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,9 +12,12 @@ public class spawner : MonoBehaviour
     public float spawnTimeWatery = 6f;
     public GameObject anodeBeetle;
     public float spawnTimeAnodeBeetle = 10f;
-    public bool enableBullet, enableWateryBlowHog, enableAnoneBeetle = false;
+    [SerializeField] private GameObject pellet;
+    public float spawnTimePellet = 6f;
+    public bool enableBullet = false, enableWateryBlowHog = false, enableAnoneBeetle = false, enablePellets = false;
 
-    private float _spawnTimeBullet, _spawnTimeWatery, _spawnTimeAnodeBeetle;
+    private float _spawnTimeBullet, _spawnTimeWatery, _spawnTimeAnodeBeetle, _spawnTimePellet;
+    
     private bool enableScript = true;
 
 
@@ -35,6 +39,7 @@ public class spawner : MonoBehaviour
         _spawnTimeBullet = spawnTimeBullet;
         _spawnTimeWatery = spawnTimeWatery;
         _spawnTimeAnodeBeetle = spawnTimeAnodeBeetle;
+        _spawnTimePellet = spawnTimePellet;
     }
 
     
@@ -56,6 +61,7 @@ public class spawner : MonoBehaviour
             if (enableBullet) _spawnTimeBullet -= Time.deltaTime;
             if (enableWateryBlowHog) _spawnTimeWatery -= Time.deltaTime;
             if (enableAnoneBeetle) _spawnTimeAnodeBeetle -= Time.deltaTime;
+            if (enablePellets) _spawnTimePellet -= Time.deltaTime;
 
 
             if (_spawnTimeBullet <= 0.0f)
@@ -73,6 +79,12 @@ public class spawner : MonoBehaviour
             {
                 GameObject.Instantiate(anodeBeetle, anodeBeetle.transform.position, anodeBeetle.transform.rotation);
                 _spawnTimeAnodeBeetle = spawnTimeAnodeBeetle;
+            }
+
+            if (_spawnTimePellet <= 0)
+            {
+                GameObject.Instantiate(pellet, pellet.transform.position, pellet.transform.rotation);
+                _spawnTimePellet = spawnTimePellet;
             }
         }
         

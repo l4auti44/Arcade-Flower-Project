@@ -13,6 +13,9 @@ public class AnodeBeetle : Enemy
     private float _destroyAfter, _startAtackAfter;
     private SpriteRenderer lightning;
     private BoxCollider2D coll;
+    private bool atacking = false;
+    private Animator childAnimator;
+    private bool left = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +24,28 @@ public class AnodeBeetle : Enemy
         _destroyAfter = destroyAfter;
         _startAtackAfter = startAtackAfter;
 
+        childAnimator = GetComponentInChildren<Animator>();
         getChild();
         spawnPosition();
         setBoxColl();
+        InvokeRepeating("FlipY", 0.5f, 0.5f);
     }
 
+
+    private void FlipY()
+    {
+        if (atacking)
+        {
+            if (lightning.flipY)
+            {
+                lightning.flipY = false;
+            }
+            else
+            {
+                lightning.flipY = true;
+            }
+        }
+    }
 
     private void getChild()
     {
@@ -57,7 +77,7 @@ public class AnodeBeetle : Enemy
             case 0:
                 transform.position = new Vector3(-GameManager.leftRightWall, randomY, 0f);
                 mirror.transform.position = new Vector3(GameManager.leftRightWall, randomY, 0f);
-
+                left = true;
                 break;
 
             //top
@@ -66,10 +86,12 @@ public class AnodeBeetle : Enemy
                 transform.position = new Vector3(randomX, GameManager.topBottom, 0f);
                 mirror.transform.position = new Vector3(randomX, -GameManager.topBottom, 0f);
 
+                
+
                 break; 
             
         }
-        
+
     }
 
     private void setBoxColl()
@@ -87,8 +109,19 @@ public class AnodeBeetle : Enemy
         lightning = getSpriteRenderer("lightning");
         lightning.enabled = false;
 
-        lightning.transform.localScale = new Vector3(distanceSprites, lightning.transform.localScale.y, lightning.transform.localScale.z);
-        lightning.transform.localPosition = new Vector3(mirror.localPosition.x / 2f, 0f, 0f);
+        if (left)
+        {
+            //lightning.transform.localScale = new Vector3(distanceSprites + 5.4f, lightning.transform.localScale.y - 2.75f, lightning.transform.localScale.z);
+            lightning.size = new Vector2(2.45f, 0.2f);
+        }
+        else
+        {
+            //lightning.transform.localScale = new Vector3(distanceSprites + 2.3f, lightning.transform.localScale.y, lightning.transform.localScale.z);
+            lightning.size = new Vector2(1.05f, 0.2f);
+        }
+        
+        lightning.transform.localPosition = new Vector3(principalSprite.localPosition.x, 0f, 0f);
+
     }
 
     // Update is called once per frame
@@ -104,6 +137,8 @@ public class AnodeBeetle : Enemy
 
         if (_startAtackAfter <= 0)
         {
+            childAnimator.SetBool("atacking", true);
+            atacking = true;
             lightning.enabled = true;
             coll.enabled = true;
 
