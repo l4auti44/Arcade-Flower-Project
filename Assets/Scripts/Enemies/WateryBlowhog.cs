@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,14 +18,17 @@ public class WateryBlowhog : Enemy
     {
         _startAtackAfter = startAtackAfter;
 
-        splashRender = GameObject.Find("splash").GetComponent<SpriteRenderer>();
+        splashRender = getSpriteRenderer("splash");
+
+        waterParticles = gameObject.GetComponentInChildren<ParticleSystem>();
+
         splashCol = gameObject.GetComponent<BoxCollider2D>();
-        waterParticles = GameObject.Find("waterParticles").GetComponent<ParticleSystem>();
         waterParticles.Stop();
         enableSplash();
         InvokeRepeating("FlipX", 0.5f, 0.5f);
         spawnPosition();
     }
+
 
     private void spawnPosition()
     {
@@ -116,5 +120,14 @@ public class WateryBlowhog : Enemy
         }
     }
 
+    private List<GameObject> getChildren() { 
+        List<GameObject> children = new List<GameObject>();
+
+        foreach (GameObject child in this.transform)
+        {
+            children.Add(child);
+        }
+        return children;
+    }
 
 }

@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
         restartButton.enabled = false;
         restartButton.image.enabled = false;
         restartButton.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
-        healthText.text = "health: " + health;
+        healthText.text = "x " +health;
     }
 
     // Update is called once per frame
@@ -48,7 +48,7 @@ public class Health : MonoBehaviour
 
     public void refreshText()
     {
-        healthText.text = "health: " + health;
+        healthText.text = "x " + health;
     }
 
     public void die()

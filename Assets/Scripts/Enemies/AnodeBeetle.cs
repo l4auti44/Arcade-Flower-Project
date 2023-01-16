@@ -19,11 +19,23 @@ public class AnodeBeetle : Enemy
         //timers
         _destroyAfter = destroyAfter;
         _startAtackAfter = startAtackAfter;
-        
-        mirror = GameObject.Find("right_bottom").GetComponent<Transform>();
-             
+
+        getMirror();
         spawnPosition();
         setBoxColl();
+    }
+
+
+    private void getMirror()
+    {
+        Transform[] transforms= GetComponentsInChildren<Transform>();
+        foreach (var trans in transforms)
+        {
+            if (trans.name == "right_bottom")
+            {
+                mirror = trans;
+            }
+        }
     }
 
     private void spawnPosition()
@@ -65,9 +77,9 @@ public class AnodeBeetle : Enemy
         coll.size = new Vector2(mirror.localPosition.x, 1f);
         coll.offset = new Vector2(mirror.localPosition.x / 2f, 0f);
 
-        
+
         //lightning
-        lightning = GameObject.Find("lightning").GetComponent<SpriteRenderer>();
+        lightning = getSpriteRenderer("lightning");
         lightning.enabled = false;
 
         lightning.transform.localScale = new Vector3(mirror.localPosition.x, lightning.transform.localScale.y, lightning.transform.localScale.z);

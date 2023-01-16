@@ -48,9 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e18c91e0a17d14fb10c816259b3e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealthPoint: 5
+  damage: 1
   startAtackAfter: 2
   lifeTime: 6
-  damage: 40
 --- !u!61 &351911397159864848
 BoxCollider2D:
   m_ObjectHideFlags: 0

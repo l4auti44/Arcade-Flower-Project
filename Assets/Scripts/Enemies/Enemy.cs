@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,5 +25,19 @@ public class Enemy : MonoBehaviour
             collision.gameObject.GetComponent<Health>().decreaseHealth(damage);
 
         }
+    }
+
+    protected virtual SpriteRenderer getSpriteRenderer(String name)
+    {
+        SpriteRenderer[] childrens = this.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var child in childrens)
+        {
+            if (child.name == name)
+            {
+                return child;
+            }
+
+        }
+        return null;
     }
 }
