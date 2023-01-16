@@ -66,6 +66,6 @@ public class Health : MonoBehaviour
         restartButton.image.enabled = false;
         restartButton.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
         Time.timeScale = 1f;
-        health = 100f;
+        health = 5f;
     }
 }

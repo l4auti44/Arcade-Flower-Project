@@ -7,6 +7,7 @@ public class AnodeBeetle : Enemy
 {
 
     private Transform mirror;
+    private Transform principalSprite;
     public float destroyAfter = 5f;
     public float startAtackAfter = 2f;
     private float _destroyAfter, _startAtackAfter;
@@ -20,13 +21,13 @@ public class AnodeBeetle : Enemy
         _destroyAfter = destroyAfter;
         _startAtackAfter = startAtackAfter;
 
-        getMirror();
+        getChild();
         spawnPosition();
         setBoxColl();
     }
 
 
-    private void getMirror()
+    private void getChild()
     {
         Transform[] transforms= GetComponentsInChildren<Transform>();
         foreach (var trans in transforms)
@@ -34,6 +35,10 @@ public class AnodeBeetle : Enemy
             if (trans.name == "right_bottom")
             {
                 mirror = trans;
+            }
+            if (trans.name == "left_top")
+            {
+                principalSprite = trans;
             }
         }
     }
@@ -72,9 +77,9 @@ public class AnodeBeetle : Enemy
         //boxColl
         coll = gameObject.GetComponent<BoxCollider2D>();
         coll.enabled = false;
-        
 
-        coll.size = new Vector2(mirror.localPosition.x, 1f);
+        var distanceSprites = Vector2.Distance(principalSprite.position, mirror.position);
+        coll.size = new Vector2(distanceSprites, 1f);
         coll.offset = new Vector2(mirror.localPosition.x / 2f, 0f);
 
 
@@ -82,7 +87,7 @@ public class AnodeBeetle : Enemy
         lightning = getSpriteRenderer("lightning");
         lightning.enabled = false;
 
-        lightning.transform.localScale = new Vector3(mirror.localPosition.x, lightning.transform.localScale.y, lightning.transform.localScale.z);
+        lightning.transform.localScale = new Vector3(distanceSprites, lightning.transform.localScale.y, lightning.transform.localScale.z);
         lightning.transform.localPosition = new Vector3(mirror.localPosition.x / 2f, 0f, 0f);
     }
 

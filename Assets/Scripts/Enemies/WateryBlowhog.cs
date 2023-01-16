@@ -13,6 +13,9 @@ public class WateryBlowhog : Enemy
     private BoxCollider2D splashCol;
     private bool shooting = false;
     private ParticleSystem waterParticles;
+    private Animator wateryAnimator;
+
+    private int flagExit = 0;
 
     void Start()
     {
@@ -21,6 +24,7 @@ public class WateryBlowhog : Enemy
         splashRender = getSpriteRenderer("splash");
 
         waterParticles = gameObject.GetComponentInChildren<ParticleSystem>();
+        wateryAnimator = gameObject.GetComponentInChildren<Animator>();
 
         splashCol = gameObject.GetComponent<BoxCollider2D>();
         waterParticles.Stop();
@@ -75,6 +79,7 @@ public class WateryBlowhog : Enemy
 
         if (_startAtackAfter <= 0f)
         {
+            flagExit += 1;
             enableSplash();
             _startAtackAfter = startAtackAfter;
         }
@@ -83,6 +88,10 @@ public class WateryBlowhog : Enemy
             GameObject.Destroy(gameObject);
         }
 
+        if (flagExit == 2)
+        {
+            wateryAnimator.SetBool("exit", true);
+        }
     }
 
     private void FlipX()
