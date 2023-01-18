@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         if (Instance != null)
         {
             Destroy(gameObject);
+            Instance.Start();
             return;
         }
 
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
         topBottom = top_bottom;
         points = GameObject.Find("points").GetComponent<TextMeshProUGUI>();
         numberPoints = 0;
+        pellets = 0;
         points.text = "Points: " + numberPoints;
     }
 
@@ -71,6 +73,7 @@ public class GameManager : MonoBehaviour
 
     private void refreshPelletsText()
     {
+        Debug.Log(pellets);
         Image fillpel = GameObject.Find("FillPellets").GetComponent<Image>();
         if (pellets == 0)
         {
