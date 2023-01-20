@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    //public static GameManager Instance;
 
 
     private TextMeshProUGUI points;
@@ -25,15 +25,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            Instance.Start();
-            return;
-        }
+        //if (Instance != null)
+        //    Destroy(gameObject);
+        //    Instance.Start();
+        //    return;
+        //}
 
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //Instance = this;
+        //DontDestroyOnLoad(gameObject);
     }
     // Start is called before the first frame update
     void Start()
