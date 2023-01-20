@@ -21,8 +21,12 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<playerManager>().takingDamage();
-            collision.gameObject.GetComponent<Health>().decreaseHealth(damage);
+
+            if (!collision.GetComponent<playerManager>().invincible)
+            {
+                collision.gameObject.GetComponent<playerManager>().takeDamage();
+                collision.gameObject.GetComponent<Health>().decreaseHealth(damage);
+            }
 
         }
     }

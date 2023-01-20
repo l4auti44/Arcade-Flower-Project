@@ -9,9 +9,10 @@ public class playerManager : MonoBehaviour
 
     private SpriteRenderer playerSprite;
     private Animator playerAnimator;
-    private bool invincible = false;
-    public float timeInvincible = 1f;
+    public bool invincible = false;
+    [SerializeField] private float timeInvincible = 1.5f;
     private float offset = 0.3f;
+    
 
     private BoxCollider2D playerColl;
     void Start()
@@ -32,7 +33,6 @@ public class playerManager : MonoBehaviour
             timeInvincible -= Time.deltaTime;
             if (timeInvincible <= 0)
             {
-                playerColl.enabled = true;
                 timeInvincible = 2f;
                 invincible = false;
             }
@@ -51,7 +51,6 @@ public class playerManager : MonoBehaviour
         {
             transform.Translate(new Vector3(-velocity, 0, 0) * Time.deltaTime);
             playerSprite.flipX = false;
-            playerAnimator.SetBool("walking", true);
         }
         if (Input.GetKey(KeyCode.D) && gameObject.transform.position.x < GameManager.leftRightWall - offset)
         {
@@ -65,10 +64,9 @@ public class playerManager : MonoBehaviour
 
     }
 
-    public void takingDamage() 
+    public void takeDamage()
     {
         playerAnimator.Play("takingDamage", 0, 0.0f);
-        playerColl.enabled = false;
         invincible = true;
     }
 

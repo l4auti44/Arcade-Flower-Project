@@ -111,13 +111,11 @@ public class AnodeBeetle : Enemy
 
         if (left)
         {
-            //lightning.transform.localScale = new Vector3(distanceSprites + 5.4f, lightning.transform.localScale.y - 2.75f, lightning.transform.localScale.z);
-            lightning.size = new Vector2(2.45f, 0.2f);
+            lightning.size = new Vector2(GameManager.leftRightWall/4, 0.2f);
         }
         else
         {
-            //lightning.transform.localScale = new Vector3(distanceSprites + 2.3f, lightning.transform.localScale.y, lightning.transform.localScale.z);
-            lightning.size = new Vector2(1.05f, 0.2f);
+            lightning.size = new Vector2(GameManager.topBottom / 4, 0.2f);
         }
         
         lightning.transform.localPosition = new Vector3(principalSprite.localPosition.x, 0f, 0f);

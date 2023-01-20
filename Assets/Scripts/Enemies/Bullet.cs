@@ -97,9 +97,16 @@ public class Bullet : Enemy
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!collision.GetComponent<playerManager>().invincible)
+        {
+            Destroy(this.gameObject);
+        }
+
         base.OnTriggerEnter2D(collision);
-        //CHANGE THIS WHEN ENEMY HEALTH SYSTEM IS IMPLEMENTED
-        Destroy(this.gameObject);
+        
+            
+        
+
     }
 
 }
