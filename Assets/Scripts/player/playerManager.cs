@@ -10,7 +10,7 @@ public class playerManager : MonoBehaviour
     private SpriteRenderer playerSprite;
     private Animator playerAnimator;
     private bool invincible = false;
-    private float timeInvincible = 2f;
+    public float timeInvincible = 1f;
     private float offset = 0.3f;
 
     private BoxCollider2D playerColl;
