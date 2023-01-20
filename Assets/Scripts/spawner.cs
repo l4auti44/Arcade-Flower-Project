@@ -46,7 +46,7 @@ public class spawner : MonoBehaviour
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Game")
+        if (SceneManager.GetActiveScene().name == "Game" || SceneManager.GetActiveScene().name == "level2" )
         {
             enableScript = true;
 
