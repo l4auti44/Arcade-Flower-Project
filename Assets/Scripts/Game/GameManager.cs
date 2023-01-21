@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
 
     private TextMeshProUGUI points;
-    private float numberPoints;
+    public static float numberPoints;
     private float time = 1f;
 
 
