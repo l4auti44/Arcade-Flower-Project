@@ -28,7 +28,7 @@ public class AnodeBeetle : Enemy
         getChild();
         spawnPosition();
         setBoxColl();
-        InvokeRepeating("FlipY", 0.5f, 0.5f);
+        //InvokeRepeating("FlipY", 0.5f, 0.5f);
     }
 
 
@@ -86,8 +86,6 @@ public class AnodeBeetle : Enemy
                 transform.position = new Vector3(randomX, GameManager.topBottom, 0f);
                 mirror.transform.position = new Vector3(randomX, -GameManager.topBottom, 0f);
 
-                
-
                 break; 
             
         }
@@ -111,11 +109,11 @@ public class AnodeBeetle : Enemy
 
         if (left)
         {
-            lightning.size = new Vector2(GameManager.leftRightWall/4, 0.2f);
+            lightning.size = new Vector2(GameManager.leftRightWall/4, lightning.size.y);
         }
         else
         {
-            lightning.size = new Vector2(GameManager.topBottom / 4, 0.2f);
+            lightning.size = new Vector2(GameManager.topBottom / 4, lightning.size.y);
         }
         
         lightning.transform.localPosition = new Vector3(principalSprite.localPosition.x, 0f, 0f);
