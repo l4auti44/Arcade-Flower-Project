@@ -2111,8 +2111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568995aec190aec4db8a84d38e23be79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left_right: 6.12
-  top_bottom: 3.29
+  left_right: 6.4
+  top_bottom: 3.8
   pelletsSllider: {fileID: 2046266778}
 --- !u!4 &1929643129
 Transform:
