@@ -42,26 +42,41 @@ public class playerManager : MonoBehaviour
 
     private void Move()
     {
-        if (Input.GetKey(KeyCode.W) && gameObject.transform.position.y < GameManager.topBottom - offset)
+        float horizontal = 0f;
+        float vertical = 0f;
+        
+
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && gameObject.transform.position.y < GameManager.topBottom - offset)
         {
-            transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
+            vertical = velocity;
 
         }
-        if (Input.GetKey(KeyCode.A) && gameObject.transform.position.x > -GameManager.leftRightWall + offset)
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && gameObject.transform.position.x > -GameManager.leftRightWall + offset)
         {
-            transform.Translate(new Vector3(-velocity, 0, 0) * Time.deltaTime);
+            horizontal = -velocity;
             playerSprite.flipX = false;
         }
-        if (Input.GetKey(KeyCode.D) && gameObject.transform.position.x < GameManager.leftRightWall - offset)
+        if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && gameObject.transform.position.x < GameManager.leftRightWall - offset)
         {
-            transform.Translate(new Vector3(velocity, 0, 0) * Time.deltaTime);
+            horizontal = velocity;
             playerSprite.flipX = true;
         }
-        if (Input.GetKey(KeyCode.S) && gameObject.transform.position.y > -GameManager.topBottom + (offset * 2f))
+        if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && gameObject.transform.position.y > -GameManager.topBottom + (offset * 2f))
         {
-            transform.Translate(new Vector3(0, -velocity, 0) * Time.deltaTime);
+            vertical = -velocity;
         }
 
+        Vector2 direction = new Vector2(horizontal, vertical);
+        if (direction.magnitude > 0.001)
+        {
+            direction.Normalize();
+ }
+        else
+        {
+            return;
+        }
+        transform.Translate(direction * velocity * Time.deltaTime, Space.World);
+        
     }
 
     public void takeDamage()
