@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private float healtPoint;
-    [SerializeField] private float maxHealthPoint = 5f;
+
+
     public float damage = 5f;
 
 
 
     void Start()
     {
-        healtPoint = maxHealthPoint;
+
     }
 
 
