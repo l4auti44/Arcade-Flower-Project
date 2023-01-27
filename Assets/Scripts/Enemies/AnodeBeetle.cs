@@ -10,12 +10,11 @@ public class AnodeBeetle : Enemy
     private Transform principalSprite;
     public float destroyAfter = 5f;
     public float startAtackAfter = 2f;
-    private float _destroyAfter, _startAtackAfter;
+    private float _destroyAfter, _startAtackAfter, _endAtack = 3.2f;
     private SpriteRenderer lightning;
     private BoxCollider2D coll;
-    private bool atacking = false;
     private Animator childAnimator;
-    private bool left = false;
+    private bool left = false, atacking = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,25 +27,10 @@ public class AnodeBeetle : Enemy
         getChild();
         spawnPosition();
         setBoxColl();
-        //InvokeRepeating("FlipY", 0.5f, 0.5f);
     }
 
 
-    private void FlipY()
-    {
-        if (atacking)
-        {
-            if (lightning.flipY)
-            {
-                lightning.flipY = false;
-            }
-            else
-            {
-                lightning.flipY = true;
-            }
-        }
-    }
-
+ 
     private void getChild()
     {
         Transform[] transforms= GetComponentsInChildren<Transform>();
@@ -133,11 +117,22 @@ public class AnodeBeetle : Enemy
 
         if (_startAtackAfter <= 0)
         {
-            childAnimator.SetBool("atacking", true);
+            
             atacking = true;
             lightning.enabled = true;
             coll.enabled = true;
 
+        }
+        if (atacking)
+        {
+            _endAtack -= Time.deltaTime;
+            if (_endAtack <= 0)
+            {
+                lightning.enabled = false;
+                coll.enabled = false;
+                atacking = false;
+            }
+            
         }
 
     }
