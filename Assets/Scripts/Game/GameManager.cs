@@ -64,7 +64,6 @@ public class GameManager : MonoBehaviour
 
     private void refreshPelletsText()
     {
-        Debug.Log(pellets);
         
         if (pellets == 0)
         {
