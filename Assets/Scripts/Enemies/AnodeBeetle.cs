@@ -55,12 +55,13 @@ public class AnodeBeetle : Enemy
 
         var randomWall = UnityEngine.Random.Range(0, 2);
 
+
         switch (randomWall)
         {
             //left
             case 0:
                 transform.position = new Vector3(-GameManager.leftRightWall, randomY, 0f);
-                mirror.transform.position = new Vector3(GameManager.leftRightWall, randomY, 0f);
+                mirror.transform.position = new Vector3(GameManager.leftRightWall + 0.26f, randomY, 0f);
                 left = true;
                 break;
 
@@ -68,7 +69,7 @@ public class AnodeBeetle : Enemy
             case 1:
                 transform.Rotate(new Vector3(0f, 0f, -90f));
                 transform.position = new Vector3(randomX, GameManager.topBottom, 0f);
-                mirror.transform.position = new Vector3(randomX, -GameManager.topBottom, 0f);
+                mirror.transform.position = new Vector3(randomX, -GameManager.topBottom - 0.26f, 0f);
 
                 break; 
             
@@ -93,11 +94,13 @@ public class AnodeBeetle : Enemy
 
         if (left)
         {
-            lightning.size = new Vector2(GameManager.leftRightWall/4, lightning.size.y);
+            var x = Convert.ToSingle(Math.Round((GameManager.leftRightWall / 4) / 0.16f));
+            lightning.size = new Vector2(0.16f * x, lightning.size.y);
         }
         else
         {
-            lightning.size = new Vector2(GameManager.topBottom / 4, lightning.size.y);
+            var x = Convert.ToSingle(Math.Round((GameManager.topBottom / 4) / 0.16f));
+            lightning.size = new Vector2(0.16f * x, lightning.size.y);
         }
         
         lightning.transform.localPosition = new Vector3(principalSprite.localPosition.x, 0f, 0f);

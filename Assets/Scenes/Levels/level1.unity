@@ -1007,7 +1007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568995aec190aec4db8a84d38e23be79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left_right: 12.85
+  left_right: 12.8
   top_bottom: 5
   pelletsSllider: {fileID: 1175575098}
 --- !u!1 &1175575096
