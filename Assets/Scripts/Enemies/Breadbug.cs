@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Breadbug : MonoBehaviour
 {
-    private float offset = 5f, destroyAfter = 5f, speed = 2f;
+    private float destroyAfter = 15f, speed = 0.5f, distanceOffset =1.5f;
+    
     private Pellet _pellet;
+    private bool backwards = false;
+    private Vector2 startPosition, startGlobalPosition;
+    private float timer = 3.6f;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,12 +26,12 @@ public class Breadbug : MonoBehaviour
         {
             if (transform.parent.position.x > 0)
             {
-                transform.position = new Vector3(transform.parent.position.x + offset, transform.parent.position.y, 0f);
+                transform.localPosition = new Vector3(distanceOffset, 0f, 0f);
                 transform.Rotate(0f, 0f, -90f);
             }
             else
             {
-                transform.position = new Vector3(transform.parent.position.x - offset, transform.parent.position.y, 0f);
+                transform.localPosition = new Vector3(-distanceOffset, 0f, 0f);
                 transform.Rotate(0f, 0f, 90f);
             }
 
@@ -35,20 +40,24 @@ public class Breadbug : MonoBehaviour
         {
             if (transform.parent.position.y > 0)
             {
-                transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y + offset, 0f);
+                transform.localPosition = new Vector3(0f, distanceOffset, 0f);
             }
             else
             {
-                transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y - offset, 0f);
+                transform.localPosition = new Vector3(0f, -distanceOffset, 0f);
                 transform.Rotate(0f, 0f, 180f);
             }
 
         }
+
+        startGlobalPosition = new Vector2(transform.position.x, transform.position.y);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         destroyAfter -= Time.deltaTime;
         if (destroyAfter <= 0)
         {
@@ -58,8 +67,33 @@ public class Breadbug : MonoBehaviour
         if (_pellet.pelletTaken)
         {
             gameObject.GetComponentInChildren<Animator>().SetBool("pelletTaken", true);
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+                transform.parent.position = Vector2.MoveTowards(transform.parent.position, startGlobalPosition, Time.deltaTime * speed * 2);
+
+        }
+        else
+        {
+            if (!backwards)
+            {
+                
+                transform.localPosition = Vector2.MoveTowards(transform.localPosition, Vector2.zero, Time.deltaTime * speed);
+
+                if (transform.localPosition == Vector3.zero)
+                {
+                    backwards = true;
+                    gameObject.GetComponentInChildren<Animator>().SetBool("backwards", true);
+                }
+            }
+            else
+            {
+                //DRAGGING PELLET
+                transform.parent.position = Vector2.MoveTowards(transform.parent.position, startGlobalPosition, Time.deltaTime * speed * 1.5f);
+            }
+
+
+
         }
 
-        
     }
 }

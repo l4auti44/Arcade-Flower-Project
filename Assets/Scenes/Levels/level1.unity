@@ -816,9 +816,9 @@ MonoBehaviour:
   spawnTimeAnodeBeetle: 5
   pellet: {fileID: 5165309928750807225, guid: 6d4294c07695d6e4b9e69d78c1936275, type: 3}
   spawnTimePellet: 6
-  enableBullet: 0
-  enableWateryBlowHog: 0
-  enableAnoneBeetle: 0
+  enableBullet: 1
+  enableWateryBlowHog: 1
+  enableAnoneBeetle: 1
   enablePellets: 1
 --- !u!4 &749067332
 Transform:
