@@ -1,5 +1,7 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 
 public class Bullet : Enemy
@@ -15,38 +17,67 @@ public class Bullet : Enemy
     
     void Start()
     {
+        var _spawner = GameObject.Find("spawner").GetComponent<spawner>();
         xWalls = GameManager.leftRightWall + 3f;
         yWalls = GameManager.topBottom + 3f;
 
         spawnPosition();
-        setRotation();
 
-    }
-
-    private void setRotation()
-    {
-        var x = transform.position.x; 
-        var y = transform.position.y;
-        
-
-        offset = Random.Range(-30f, 30f);
-        if (x == xWalls)
+        if (spawner.bulletAmount <= 7)
         {
-            transform.Rotate(new Vector3(0, 0, 180f + offset));
-
-        }
-        else if (x == -xWalls)
-        {
-            transform.Rotate(new Vector3(0, 0, 0f + offset));
-        }
-        else if (y == yWalls) 
-        {
-            transform.Rotate(new Vector3(0, 0, 270f + offset));
+            
+            setRotation(false);
         }
         else
         {
-            transform.Rotate(new Vector3(0, 0, 90f + offset));
+            setRotation(true);
+            spawner.bulletAmount = 0;
+
         }
+        
+
+    }
+
+    private void setRotation(bool toPlayer)
+    {
+        var x = transform.position.x; 
+        var y = transform.position.y;
+        offset = Random.Range(-30f, 30f);
+        if (toPlayer)
+        {
+            Vector3 diff = GameObject.Find("Player").transform.position - transform.position;
+            diff.Normalize();
+            float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, rot_z);
+
+            this.GetComponent<SpriteRenderer>().color = Color.blue;
+
+        }
+        else
+        {
+            if (x == xWalls)
+            {
+                transform.Rotate(new Vector3(0, 0, 180f + offset));
+
+            }
+            else if (x == -xWalls)
+            {
+                transform.Rotate(new Vector3(0, 0, 0f + offset));
+            }
+            else if (y == yWalls)
+            {
+                transform.Rotate(new Vector3(0, 0, 270f + offset));
+            }
+            else
+            {
+                transform.Rotate(new Vector3(0, 0, 90f + offset));
+            }
+        }
+
+        
+        
+        
+        
 
 
     }

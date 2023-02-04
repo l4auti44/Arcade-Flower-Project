@@ -10,7 +10,6 @@ public class WateryBlowhog : Enemy
     public float lifeTime = 10f;
     private float _startAtackAfter;
     private BoxCollider2D splashCol;
-    private bool shooting = false;
     private ParticleSystem waterParticles;
     private Animator wateryAnimator;
 
@@ -102,26 +101,17 @@ public class WateryBlowhog : Enemy
         {
             waterParticles.Stop();
             splashCol.enabled = false;
-            shooting = false;
+
             
         }
         else
         {
             waterParticles.Play();
             splashCol.enabled = true;
-            shooting = true;
+
             
         }
     }
 
-    private List<GameObject> getChildren() { 
-        List<GameObject> children = new List<GameObject>();
-
-        foreach (GameObject child in this.transform)
-        {
-            children.Add(child);
-        }
-        return children;
-    }
 
 }

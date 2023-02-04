@@ -20,8 +20,9 @@ public class spawner : MonoBehaviour
     
     private bool enableScript = true;
 
-
+    static public int bulletAmount = 0;
     
+
 
     private void Awake()
     {
@@ -68,6 +69,7 @@ public class spawner : MonoBehaviour
             {
                 GameObject.Instantiate(bullet, bullet.transform.position, this.transform.rotation);
                 _spawnTimeBullet = spawnTimeBullet;
+                bulletAmount++;
             }
 
             if (_spawnTimeWatery <= 0f)
