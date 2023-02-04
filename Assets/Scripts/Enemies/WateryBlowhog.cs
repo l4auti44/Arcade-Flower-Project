@@ -25,6 +25,7 @@ public class WateryBlowhog : Enemy
         wateryAnimator = gameObject.GetComponentInChildren<Animator>();
 
         splashCol = gameObject.GetComponent<BoxCollider2D>();
+        splashCol.enabled = false;
         waterParticles.Stop();
 
        
@@ -99,7 +100,7 @@ public class WateryBlowhog : Enemy
         
         if (splashCol.enabled == true)
         {
-            waterParticles.Stop();
+            waterParticles.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
             splashCol.enabled = false;
 
             

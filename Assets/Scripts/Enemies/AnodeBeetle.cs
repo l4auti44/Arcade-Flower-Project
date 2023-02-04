@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AnodeBeetle : Enemy
@@ -15,6 +16,9 @@ public class AnodeBeetle : Enemy
     private BoxCollider2D coll;
     private Animator childAnimator;
     private bool left = false, atacking = false;
+    private float timerForParticles = 5.4f;
+    private ParticleSystem lightningSpark;
+    private int flagParticles = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +31,8 @@ public class AnodeBeetle : Enemy
         getChild();
         spawnPosition();
         setBoxColl();
+
+        lightningSpark = GetComponentInChildren<ParticleSystem>();
     }
 
 
@@ -135,6 +141,22 @@ public class AnodeBeetle : Enemy
                 coll.enabled = false;
                 atacking = false;
             }
+            
+        }
+
+        timerForParticles -= Time.deltaTime;
+        if (timerForParticles <= 0f)
+        {
+            if (flagParticles == 0)
+            {
+                timerForParticles = 0.5f;
+                flagParticles++;
+            }
+            else
+            {
+                timerForParticles = 5f;
+            }
+            lightningSpark.Play();
             
         }
 

@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Breadbug : MonoBehaviour
 {
-    private float destroyAfter = 15f, speed = 0.5f, distanceOffset =1.5f;
-    
+    private float destroyAfter = 15f, distanceOffset = 1.5f;
+    [SerializeField] private float speed = 0.5f, globalSpeedDragging = 1f;
     private Pellet _pellet;
     private bool backwards = false;
-    private Vector2 startPosition, startGlobalPosition;
+    private Vector2 startGlobalPosition;
     private float timer = 3.6f;
     // Start is called before the first frame update
     void Start()
@@ -88,7 +88,7 @@ public class Breadbug : MonoBehaviour
             else
             {
                 //DRAGGING PELLET
-                transform.parent.position = Vector2.MoveTowards(transform.parent.position, startGlobalPosition, Time.deltaTime * speed * 1.5f);
+                transform.parent.position = Vector2.MoveTowards(transform.parent.position, startGlobalPosition, Time.deltaTime * globalSpeedDragging);
             }
 
 
