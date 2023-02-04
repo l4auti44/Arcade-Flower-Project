@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 351911397159864851}
   - component: {fileID: 351911397159864848}
   m_Layer: 0
-  m_Name: watery_blowhog
+  m_Name: (discontinued)watery_blowhog
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

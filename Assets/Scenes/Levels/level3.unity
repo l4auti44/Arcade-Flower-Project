@@ -1809,8 +1809,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3593267414456720384, guid: b4b443ca0c7d75c468f05c52ee5dc4c3, type: 3}
   spawnTimeBullet: 0.2
-  wateryBlowHog: {fileID: 351911397159864849, guid: 1f6196df87ce7ea48b13fdb9468ade86, type: 3}
-  spawnTimeWatery: 9
+  wateryBlowHog: {fileID: 351911397159864849, guid: a6dcccc1bb9623b42b09b5efe8485c8b, type: 3}
+  spawnTimeWatery: 3
   anodeBeetle: {fileID: 1452003739467797289, guid: ba64e4c31fac3364a83126b04aed156a, type: 3}
   spawnTimeAnodeBeetle: 5
   pellet: {fileID: 5165309928750807225, guid: 6d4294c07695d6e4b9e69d78c1936275, type: 3}

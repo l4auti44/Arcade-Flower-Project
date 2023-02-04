@@ -9,7 +9,6 @@ public class WateryBlowhog : Enemy
     public float startAtackAfter = 2f;
     public float lifeTime = 10f;
     private float _startAtackAfter;
-    private SpriteRenderer splashRender;
     private BoxCollider2D splashCol;
     private bool shooting = false;
     private ParticleSystem waterParticles;
@@ -21,15 +20,15 @@ public class WateryBlowhog : Enemy
     {
         _startAtackAfter = startAtackAfter;
 
-        splashRender = getSpriteRenderer("splash");
+        
 
         waterParticles = gameObject.GetComponentInChildren<ParticleSystem>();
         wateryAnimator = gameObject.GetComponentInChildren<Animator>();
 
         splashCol = gameObject.GetComponent<BoxCollider2D>();
         waterParticles.Stop();
-        enableSplash();
-        InvokeRepeating("FlipX", 0.5f, 0.5f);
+
+       
         spawnPosition();
     }
 
@@ -75,7 +74,6 @@ public class WateryBlowhog : Enemy
     {
         _startAtackAfter -= Time.deltaTime;
         lifeTime -= Time.deltaTime;
-        //movingLeftRight();
 
         if (_startAtackAfter <= 0f)
         {
@@ -94,38 +92,25 @@ public class WateryBlowhog : Enemy
         }
     }
 
-    private void FlipX()
-    {
-        if (shooting)
-        {
-            if (splashRender.flipX)
-            {
-                splashRender.flipX = false;
-            }
-            else
-            {
-                splashRender.flipX = true;
-            }
-        }
-    }
+
 
 
     private void enableSplash() {
         
         
-        if (splashRender.enabled == true)
+        if (splashCol.enabled == true)
         {
-            splashCol.enabled = false;
-            splashRender.enabled = false;
-            shooting = false;
             waterParticles.Stop();
+            splashCol.enabled = false;
+            shooting = false;
+            
         }
         else
         {
-            splashCol.enabled = true;
-            splashRender.enabled = true;
-            shooting = true;
             waterParticles.Play();
+            splashCol.enabled = true;
+            shooting = true;
+            
         }
     }
 
