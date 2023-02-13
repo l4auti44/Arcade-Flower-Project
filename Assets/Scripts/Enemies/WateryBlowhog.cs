@@ -23,8 +23,9 @@ public class WateryBlowhog : Enemy
 
         waterParticles = gameObject.GetComponentInChildren<ParticleSystem>();
         wateryAnimator = gameObject.GetComponentInChildren<Animator>();
-
+       
         splashCol = gameObject.GetComponent<BoxCollider2D>();
+
         splashCol.enabled = false;
         waterParticles.Stop();
 

@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 
 
     public float damage = 5f;
-
+    public int health = 1;
 
 
     void Start()
@@ -44,4 +44,19 @@ public class Enemy : MonoBehaviour
         }
         return null;
     }
+
+    protected virtual BoxCollider2D getBoxCollider2d(String name)
+    {
+        BoxCollider2D[] childrens = this.GetComponentsInChildren<BoxCollider2D>();
+        foreach (var child in childrens)
+        {
+            if (child.name == name)
+            {
+                return child;
+            }
+
+        }
+        return null;
+    }
+
 }

@@ -96,4 +96,9 @@ public class Breadbug : MonoBehaviour
         }
 
     }
+
+    private void OnMouseDown()
+    {
+        Destroy(gameObject);
+    }
 }

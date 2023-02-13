@@ -16,7 +16,7 @@ public class AnodeBeetle : Enemy
     private BoxCollider2D coll;
     private Animator childAnimator;
     private bool left = false, atacking = false;
-    private float timerForParticles = 5.4f;
+    [SerializeField]private float timerForParticles = 5.4f;
     private ParticleSystem lightningSpark;
     private int flagParticles = 0;
 

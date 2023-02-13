@@ -57,12 +57,20 @@ public class GameManager : MonoBehaviour
         if (pellets < 7)
         {
             pellets++;
-            refreshPelletsText();
+            Debug.Log(pellets);
+            refreshPelletsText(false);
         }
         
     }
 
-    private void refreshPelletsText()
+    public void usePellets(int amount) 
+    {
+        pellets = pellets - amount;
+        Debug.Log(pellets);
+        refreshPelletsText(true);
+    }
+
+    public void refreshPelletsText(bool reduce)
     {
         
         if (pellets == 0)
@@ -73,8 +81,15 @@ public class GameManager : MonoBehaviour
         {
             pelletsSllider.enabled = true;
         }
-     
-        pelletsSllider.rectTransform.localScale = new Vector2(pelletsSllider.rectTransform.localScale.x + 1f, 1f);
+        if (!reduce)
+        {
+            pelletsSllider.rectTransform.localScale = new Vector2(pelletsSllider.rectTransform.localScale.x + 1f, 1f);
+        }
+        else
+        {
+            pelletsSllider.rectTransform.localScale = new Vector2(pelletsSllider.rectTransform.localScale.x - 1f, 1f);
+        }
+        
        
         
     }
