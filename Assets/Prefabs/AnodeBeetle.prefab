@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 2756743955406746756}
   - component: {fileID: 2463608718640828680}
   - component: {fileID: 351273832968358544}
-  - component: {fileID: 8033604207178202307}
+  - component: {fileID: 3327602706471925081}
   m_Layer: 0
   m_Name: lightning spark particles
   m_TagString: Untagged
@@ -4918,21 +4918,26 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!111 &8033604207178202307
-Animation:
+--- !u!95 &3327602706471925081
+Animator:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253051864177340751}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c76de532dba9b33409e13c8976f1bbcd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1452003739467797289
 GameObject:
   m_ObjectHideFlags: 0
