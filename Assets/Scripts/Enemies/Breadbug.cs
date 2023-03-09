@@ -11,6 +11,7 @@ public class Breadbug : MonoBehaviour
     private bool backwards = false;
     private Vector2 startGlobalPosition;
     private float timer = 3.6f;
+    private bool killed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -87,8 +88,12 @@ public class Breadbug : MonoBehaviour
             }
             else
             {
-                //DRAGGING PELLET
-                transform.parent.position = Vector2.MoveTowards(transform.parent.position, startGlobalPosition, Time.deltaTime * globalSpeedDragging);
+                if (!killed)
+                {
+                    //DRAGGING PELLET
+                    transform.parent.position = Vector2.MoveTowards(transform.parent.position, startGlobalPosition, Time.deltaTime * globalSpeedDragging);
+                }
+                
             }
 
 
@@ -100,5 +105,14 @@ public class Breadbug : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
+    }
+
+    public void Killed() 
+    {
+        gameObject.GetComponentInChildren<Animator>().SetBool("killed", true);
+        killed = true;
+
+
+
     }
 }

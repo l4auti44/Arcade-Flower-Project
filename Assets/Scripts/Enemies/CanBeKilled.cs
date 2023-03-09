@@ -7,6 +7,7 @@ using UnityEngine;
 public class CanBeKilled : MonoBehaviour
 {
     private SpriteRenderer UI_Cursor;
+    [SerializeField] private GameObject pinkman;
     private void Start()
     {
         UI_Cursor = getSpriteRenderer("watchout_UI_cursor");
@@ -22,15 +23,28 @@ public class CanBeKilled : MonoBehaviour
             
             if (transform.parent.parent != null)
             {
-                Destroy(transform.parent.parent.gameObject);
+                Debug.Log("1o");
+                GameObject.Instantiate(pinkman, this.transform);
+
+                if (gameObject.name == "breadbug_spritesheet_0")
+                {
+                    transform.parent.GetComponent<Breadbug>().Killed();
+                }
+
+                //Destroy(transform.parent.parent.gameObject);
             }
             else if (transform.parent != null)
             {
-                Destroy(transform.parent.gameObject);
+                Debug.Log("2o");
+                GameObject.Instantiate(pinkman, this.transform);
+                // Destroy(transform.parent.gameObject);
             }
             else
             {
-                Destroy(gameObject);
+
+                Debug.Log("3o");
+                GameObject.Instantiate(pinkman, this.transform);
+                // Destroy(gameObject);
             }
 
 
@@ -41,12 +55,18 @@ public class CanBeKilled : MonoBehaviour
 
     private bool HaveEnoughtPellets()
     {
-        var _healt = gameObject.GetComponentInParent<Enemy>().health;
+        var _health = 1;
+        if (gameObject.name != "breadbug_spritesheet_0")
+        {
+            _health = gameObject.GetComponentInParent<Enemy>().health;
+        }
 
-        if (GameManager.pellets >= _healt)
+        
+
+        if (GameManager.pellets >= _health)
         {
            
-            GameObject.Find("GameController").GetComponent<GameManager>().usePellets(_healt);
+            GameObject.Find("GameController").GetComponent<GameManager>().usePellets(_health);
             return true;
         }
         else

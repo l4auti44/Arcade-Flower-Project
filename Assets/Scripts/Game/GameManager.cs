@@ -31,9 +31,10 @@ public class GameManager : MonoBehaviour
         topBottom = top_bottom;
         points = GameObject.Find("points").GetComponent<TextMeshProUGUI>();
         numberPoints = 0;
-        pellets = 0;
+        pellets = 7;
         pelletsSllider.rectTransform.localScale = new Vector2(0f, 1f);
         points.text = "Points: " + numberPoints;
+        refreshPelletsText();
     }
 
     // Update is called once per frame
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviour
         {
             pellets++;
             Debug.Log(pellets);
-            refreshPelletsText(false);
+            refreshPelletsText();
         }
         
     }
@@ -67,10 +68,10 @@ public class GameManager : MonoBehaviour
     {
         pellets = pellets - amount;
         Debug.Log(pellets);
-        refreshPelletsText(true);
+        refreshPelletsText();
     }
 
-    public void refreshPelletsText(bool reduce)
+    public void refreshPelletsText()
     {
         
         if (pellets == 0)
@@ -81,16 +82,9 @@ public class GameManager : MonoBehaviour
         {
             pelletsSllider.enabled = true;
         }
-        if (!reduce)
-        {
-            pelletsSllider.rectTransform.localScale = new Vector2(pelletsSllider.rectTransform.localScale.x + 1f, 1f);
-        }
-        else
-        {
-            pelletsSllider.rectTransform.localScale = new Vector2(pelletsSllider.rectTransform.localScale.x - 1f, 1f);
-        }
         
-       
+        pelletsSllider.rectTransform.localScale = new Vector2(1 * pellets, 1f);
+
         
     }
 

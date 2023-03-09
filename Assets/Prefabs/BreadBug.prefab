@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5f4e880338d4045b0bf44567be5b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pinkman: {fileID: 8570457209959293351, guid: c6aafb9223865d34990c7b0893235539, type: 3}
 --- !u!1 &2890588012284470403
 GameObject:
   m_ObjectHideFlags: 0
