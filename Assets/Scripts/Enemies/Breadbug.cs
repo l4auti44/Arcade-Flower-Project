@@ -112,12 +112,10 @@ public class Breadbug : MonoBehaviour
                     else if (transform.eulerAngles.z == 90)
 
                     {
-                        Debug.Log("90 gato");
                         transform.position = Vector2.MoveTowards(transform.position, new Vector2(-30, transform.position.y), Time.deltaTime * speed * 5);
                     }
                     else
                     {
-                        Debug.Log(transform.eulerAngles.z);
                         transform.position = Vector2.MoveTowards(transform.position, new Vector2(30, transform.position.y), Time.deltaTime * speed * 5);
                     }
                 }
