@@ -10,7 +10,7 @@ public class Breadbug : MonoBehaviour
     private Pellet _pellet;
     private bool backwards = false;
     private Vector2 startGlobalPosition;
-    private float timer = 3.6f;
+    private float timer = 3.6f, timer2 = 1.85f;
     private bool killed = false;
     // Start is called before the first frame update
     void Start()
@@ -65,17 +65,17 @@ public class Breadbug : MonoBehaviour
             GameObject.Destroy(transform.parent.gameObject);
         }
 
-        if (_pellet.pelletTaken)
+        if (_pellet.pelletTaken && !killed)
         {
             gameObject.GetComponentInChildren<Animator>().SetBool("pelletTaken", true);
             timer -= Time.deltaTime;
             if (timer <= 0)
-                transform.parent.position = Vector2.MoveTowards(transform.parent.position, startGlobalPosition, Time.deltaTime * speed * 2);
+                transform.parent.position = Vector2.MoveTowards(transform.parent.position, startGlobalPosition, Time.deltaTime * speed * 5);
 
         }
         else
         {
-            if (!backwards)
+            if (!backwards && !killed)
             {
                 
                 transform.localPosition = Vector2.MoveTowards(transform.localPosition, Vector2.zero, Time.deltaTime * speed);
@@ -96,7 +96,35 @@ public class Breadbug : MonoBehaviour
                 
             }
 
+            if (killed)
+            {
+                timer2 -= Time.deltaTime;
+                if (timer2 <= 0)
+                {
+                    if (transform.eulerAngles.z == 0)
+                    {
+                        transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, 30), Time.deltaTime * speed * 5);
+                    }
+                    else if (transform.eulerAngles.z == -180 || transform.eulerAngles.z == 180)
+                    {
+                        transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, -30), Time.deltaTime * speed * 5);
+                    }
+                    else if (transform.eulerAngles.z == 90)
 
+                    {
+                        Debug.Log("90 gato");
+                        transform.position = Vector2.MoveTowards(transform.position, new Vector2(-30, transform.position.y), Time.deltaTime * speed * 5);
+                    }
+                    else
+                    {
+                        Debug.Log(transform.eulerAngles.z);
+                        transform.position = Vector2.MoveTowards(transform.position, new Vector2(30, transform.position.y), Time.deltaTime * speed * 5);
+                    }
+                }
+                
+
+            }
+            
 
         }
 
