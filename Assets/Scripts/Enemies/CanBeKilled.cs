@@ -8,6 +8,8 @@ public class CanBeKilled : MonoBehaviour
 {
     private SpriteRenderer UI_Cursor;
     [SerializeField] private GameObject pinkman;
+    private bool killed;
+    private int _health;
     private void Start()
     {
         UI_Cursor = getSpriteRenderer("watchout_UI_cursor");
@@ -18,33 +20,44 @@ public class CanBeKilled : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (HaveEnoughtPellets()) 
+        if (gameObject.name == "breadbug_spritesheet_0")
         {
-            
+            killed = transform.parent.GetComponent<Breadbug>().Killed();
+
+        }
+        else
+        {
+            killed = gameObject.GetComponentInParent<Enemy>().Killed();
+        }
+
+        if (HaveEnoughtPellets() && !killed) 
+        {
+            GameObject.Find("GameController").GetComponent<GameManager>().usePellets(_health);
             if (transform.parent.parent != null)
             {
-                Debug.Log("1o");
-                GameObject.Instantiate(pinkman, this.transform);
+                
 
-                if (gameObject.name == "breadbug_spritesheet_0")
-                {
-                    transform.parent.GetComponent<Breadbug>().Killed();
+                
+                    if (!killed)
+                    {
+                       GameObject.Instantiate(pinkman, this.transform);
+                    
                 }
 
-                //Destroy(transform.parent.parent.gameObject);
+                
             }
             else if (transform.parent != null)
             {
-                Debug.Log("2o");
+
                 GameObject.Instantiate(pinkman, this.transform);
-                // Destroy(transform.parent.gameObject);
+
             }
             else
             {
 
-                Debug.Log("3o");
+
                 GameObject.Instantiate(pinkman, this.transform);
-                // Destroy(gameObject);
+
             }
 
 
@@ -55,7 +68,7 @@ public class CanBeKilled : MonoBehaviour
 
     private bool HaveEnoughtPellets()
     {
-        var _health = 1;
+        _health = 1;
         if (gameObject.name != "breadbug_spritesheet_0")
         {
             _health = gameObject.GetComponentInParent<Enemy>().health;
@@ -64,9 +77,7 @@ public class CanBeKilled : MonoBehaviour
         
 
         if (GameManager.pellets >= _health)
-        {
-           
-            GameObject.Find("GameController").GetComponent<GameManager>().usePellets(_health);
+        { 
             return true;
         }
         else

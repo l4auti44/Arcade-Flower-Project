@@ -88,4 +88,9 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void addPoints(int amount)
+    {
+        numberPoints += amount;
+        points.text = "Points: " + numberPoints;
+    }
 }

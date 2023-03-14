@@ -10,7 +10,8 @@ public class Enemy : MonoBehaviour
     public float damage = 5f;
     public int health = 1;
 
-
+    private bool killed = false;
+    [SerializeField] int pointsForKill = 5;
     void Start()
     {
 
@@ -59,4 +60,20 @@ public class Enemy : MonoBehaviour
         return null;
     }
 
+    public bool Killed()
+    {
+
+        if (killed == false)
+        {
+            //gameObject.GetComponentInChildren<Animator>().SetBool("killed", true);
+            GameObject.Find("GameController").GetComponent<GameManager>().addPoints(pointsForKill);
+            killed = true;
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
 }
