@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pellet : MonoBehaviour
 {
     [SerializeField] private GameObject breadbug;
-    private float timePass = 0f;
+    [SerializeField] private float timeForSpawnBreadbug = 5f;
     private bool spawnedBreedbug = false;
     public bool pelletTaken = false;
     // Start is called before the first frame update
@@ -19,9 +19,9 @@ public class Pellet : MonoBehaviour
 
     private void Update()
     {
-        timePass += Time.deltaTime;
+        timeForSpawnBreadbug -= Time.deltaTime;
 
-        if (timePass >= 5f && !spawnedBreedbug && !pelletTaken)
+        if (timeForSpawnBreadbug <= 0f && !spawnedBreedbug && !pelletTaken)
         {
             GameObject.Instantiate(breadbug, this.transform, true);
             spawnedBreedbug = true;
