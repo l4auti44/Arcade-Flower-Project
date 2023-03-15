@@ -100,7 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   health: 1
-  speed: 3.2
+  pointsForKill: 5
+  speed: 3.18
 --- !u!58 &6389558804726775600
 CircleCollider2D:
   m_ObjectHideFlags: 0
