@@ -12,8 +12,9 @@ public class Breadbug : MonoBehaviour
     private Vector2 startGlobalPosition;
     private float timer = 3.6f, timer2 = 1.85f;
     private bool killed = false;
+    [SerializeField] private GameObject floatingPoints;
 
-    [SerializeField] int pointsForKill = 50;
+    [SerializeField] public int pointsForKill = 50;
     // Start is called before the first frame update
     void Start()
     {
@@ -141,7 +142,8 @@ public class Breadbug : MonoBehaviour
         {
             gameObject.GetComponentInChildren<Animator>().SetBool("killed", true);
             killed = true;
-            GameObject.Find("GameController").GetComponent<GameManager>().addPoints(pointsForKill);   
+            GameObject.Find("GameController").GetComponent<GameManager>().addPoints(pointsForKill);
+            GameObject.Instantiate(floatingPoints, transform.position, Quaternion.identity, transform);
             return false;
         }
         else

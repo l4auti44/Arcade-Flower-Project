@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         numberPoints = 0;
         pellets = 7;
         pelletsSllider.rectTransform.localScale = new Vector2(0f, 1f);
-        points.text = "Points: " + numberPoints;
+        points.text = numberPoints.ToString();
         refreshPelletsText();
     }
 
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         if (time <= 0)
         {
             numberPoints += 10;
-            points.text = "Points: " + numberPoints;
+            points.text = numberPoints.ToString();
             time += 1;
         }
 
@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour
         if (pellets < 7)
         {
             pellets++;
-            Debug.Log(pellets);
             refreshPelletsText();
         }
         
@@ -67,7 +66,6 @@ public class GameManager : MonoBehaviour
     public void usePellets(int amount) 
     {
         pellets = pellets - amount;
-        Debug.Log(pellets);
         refreshPelletsText();
     }
 
@@ -91,6 +89,6 @@ public class GameManager : MonoBehaviour
     public void addPoints(int amount)
     {
         numberPoints += amount;
-        points.text = "Points: " + numberPoints;
+        points.text = numberPoints.ToString();
     }
 }
