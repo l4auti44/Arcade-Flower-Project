@@ -195,7 +195,7 @@ MonoBehaviour:
   speed: 0.3
   globalSpeedDragging: 1
   floatingPoints: {fileID: 3921009216467326958, guid: 3f8643fb3f7267545998465d54e8b1e8, type: 3}
-  pointsForKill: 50
+  pointsForKill: 25
 --- !u!1001 &32646759600784630
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4989,7 +4989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   health: 1
-  pointsForKill: 5
+  pointsForKill: 75
   floatingPoints: {fileID: 3921009216467326958, guid: 3f8643fb3f7267545998465d54e8b1e8, type: 3}
   destroyAfter: 20
   startAtackAfter: 7.8
