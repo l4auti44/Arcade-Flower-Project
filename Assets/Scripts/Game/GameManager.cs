@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         points = GameObject.Find("points").GetComponent<TextMeshProUGUI>();
         numberPoints = 0;
         pellets = _pellets;
-        pelletsSllider.rectTransform.localScale = new Vector2(0f, 1f);
+        pelletsSllider.rectTransform.localScale = new Vector2(0f, pelletsSllider.rectTransform.localScale.y);
         points.text = numberPoints.ToString();
         refreshPelletsText();
     }
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
             pelletsSllider.enabled = true;
         }
         
-        pelletsSllider.rectTransform.localScale = new Vector2(1 * pellets, 1f);
+        pelletsSllider.rectTransform.localScale = new Vector2(1 * pellets, pelletsSllider.rectTransform.localScale.y);
 
         
     }
