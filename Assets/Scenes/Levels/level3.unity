@@ -1338,6 +1338,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31484d1a7df7f4841bd699f246647534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1399223842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1399223843}
+  m_Layer: 0
+  m_Name: BulletsParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1399223843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399223842}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1493422641
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,6 +1763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3593267414456720384, guid: b4b443ca0c7d75c468f05c52ee5dc4c3, type: 3}
+  bulletsParent: {fileID: 1399223842}
   spawnTimeBullet: 0.2
   wateryBlowHog: {fileID: 351911397159864849, guid: a6dcccc1bb9623b42b09b5efe8485c8b, type: 3}
   spawnTimeWatery: 3

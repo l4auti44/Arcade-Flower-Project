@@ -8,12 +8,12 @@ public class WateryBlowhog : Enemy
 
     public float startAtackAfter = 2f;
     public float lifeTime = 10f;
-    private float _startAtackAfter;
+    private float _startAtackAfter, _stopSplashTime = 0.8f;
     private BoxCollider2D splashCol;
     private ParticleSystem waterParticles;
     private Animator wateryAnimator;
 
-    private int flagExit = 0;
+    private bool flagExit = false;
 
     void Start()
     {
@@ -75,22 +75,35 @@ public class WateryBlowhog : Enemy
     {
         _startAtackAfter -= Time.deltaTime;
         lifeTime -= Time.deltaTime;
-
-        if (_startAtackAfter <= 0f)
+        
+        if (!killed)
         {
-            flagExit += 1;
-            enableSplash();
-            _startAtackAfter = startAtackAfter;
+            if (_startAtackAfter <= 0f)
+            {
+                enableSplash();
+                flagExit = true;
+                _startAtackAfter = startAtackAfter;
+            }
+
+
+            if (flagExit)
+            {
+                _stopSplashTime -= Time.deltaTime;
+                if (_stopSplashTime <= 0)
+                {
+                    enableSplash();
+                    wateryAnimator.SetBool("exit", true);
+                    flagExit = false;
+                }
+
+            }
         }
+
         if (lifeTime <= 0f)
         {
             GameObject.Destroy(gameObject);
         }
 
-        if (flagExit == 2)
-        {
-            wateryAnimator.SetBool("exit", true);
-        }
     }
 
 
@@ -115,5 +128,16 @@ public class WateryBlowhog : Enemy
         }
     }
 
+    override public bool Killed()
+    {
+        wateryAnimator.SetBool("killed", true);
+        if (splashCol.enabled == true)
+        {
+            enableSplash();
+        }
+        base.Killed();
+        return false;
+        
+    }
 
 }

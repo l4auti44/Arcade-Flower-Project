@@ -7,6 +7,7 @@ public class spawner : MonoBehaviour
     public static spawner Instance;
 
     public GameObject bullet;
+    public GameObject bulletsParent;
     public float spawnTimeBullet = 0.5f;
     public GameObject wateryBlowHog;
     public float spawnTimeWatery = 6f;
@@ -67,7 +68,7 @@ public class spawner : MonoBehaviour
 
             if (_spawnTimeBullet <= 0.0f)
             {
-                GameObject.Instantiate(bullet, bullet.transform.position, this.transform.rotation);
+                GameObject.Instantiate(bullet, bullet.transform.position, this.transform.rotation, bulletsParent.transform);
                 _spawnTimeBullet = spawnTimeBullet;
                 bulletAmount++;
             }

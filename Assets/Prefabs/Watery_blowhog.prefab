@@ -52,7 +52,7 @@ MonoBehaviour:
   pointsForKill: 100
   floatingPoints: {fileID: 3921009216467326958, guid: 3f8643fb3f7267545998465d54e8b1e8, type: 3}
   startAtackAfter: 2
-  lifeTime: 6
+  lifeTime: 5
 --- !u!61 &7175369869452275688
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -267,7 +267,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2955275063251596995}
   serializedVersion: 8
-  lengthInSec: 3
+  lengthInSec: 2
   simulationSpeed: 0.85
   stopAction: 0
   cullingMode: 0

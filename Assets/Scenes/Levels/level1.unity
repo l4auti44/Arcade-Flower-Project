@@ -733,6 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3593267414456720384, guid: b4b443ca0c7d75c468f05c52ee5dc4c3, type: 3}
+  bulletsParent: {fileID: 1074254032}
   spawnTimeBullet: 0.31
   wateryBlowHog: {fileID: 351911397159864849, guid: a6dcccc1bb9623b42b09b5efe8485c8b, type: 3}
   spawnTimeWatery: 3
@@ -934,8 +935,39 @@ MonoBehaviour:
   pelletMeter: {fileID: 2126683471}
   left_right: 12.8
   top_bottom: 5
-  _pellets: 0
+  _pellets: 4
   pelletsSllider: {fileID: 1175575098}
+--- !u!1 &1074254032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1074254033}
+  m_Layer: 0
+  m_Name: BulletsParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1074254033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074254032}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1175575096
 GameObject:
   m_ObjectHideFlags: 0

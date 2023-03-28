@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public float damage = 5f;
     public int health = 1;
 
-    private bool killed = false;
+    public bool killed = false;
     public int pointsForKill = 5;
     [SerializeField] private GameObject floatingPoints;
     void Start()
@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
         return null;
     }
 
-    public bool Killed()
+    public virtual bool Killed()
     {
 
         if (killed == false)
