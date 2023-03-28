@@ -14,57 +14,50 @@ public class CanBeKilled : MonoBehaviour
     {
         UI_Cursor = getSpriteRenderer("watchout_UI_cursor");
         UI_Cursor.enabled = false;
-        
+
     }
 
 
     private void OnMouseDown()
     {
-        if (gameObject.name == "breadbug_spritesheet_0")
+        if (HaveEnoughtPellets())
         {
-            killed = transform.parent.GetComponent<Breadbug>().Killed();
-
-        }
-        else
-        {
-            killed = gameObject.GetComponentInParent<Enemy>().Killed();
-        }
-
-        if (HaveEnoughtPellets() && !killed) 
-        {
-            GameObject.Find("GameController").GetComponent<GameManager>().usePellets(_health);
-            if (transform.parent.parent != null)
+            if (gameObject.name == "breadbug_spritesheet_0")
             {
-                
-
-                
-                    if (!killed)
-                    {
-                       GameObject.Instantiate(pinkman, this.transform);
-                    
-                }
-
-                
-            }
-            else if (transform.parent != null)
-            {
-
-                GameObject.Instantiate(pinkman, this.transform);
+                killed = transform.parent.GetComponent<Breadbug>().Killed();
 
             }
             else
             {
-
-
-                GameObject.Instantiate(pinkman, this.transform);
-
+                killed = gameObject.GetComponentInParent<Enemy>().Killed();
             }
 
+            if (!killed)
+            {
+                GameObject.Find("GameController").GetComponent<GameManager>().usePellets(_health);
+                if (transform.parent.parent != null)
+                {
+                    GameObject.Instantiate(pinkman, this.transform);
+
+                }
+
+                else if (transform.parent != null)
+                {
+
+                    GameObject.Instantiate(pinkman, this.transform);
+
+                }
+                else
+                {
+
+                    GameObject.Instantiate(pinkman, this.transform);
+
+                }
+            }
 
         }
-        
-        
     }
+
 
     private bool HaveEnoughtPellets()
     {
@@ -77,11 +70,12 @@ public class CanBeKilled : MonoBehaviour
         
 
         if (GameManager.pellets >= _health)
-        { 
+        {
             return true;
         }
         else
         {
+            GameObject.Find("GameController").GetComponent<GameManager>().notEnoughtPelletAnim();
             Debug.Log("Not enougth pellets");
         }
         return false;

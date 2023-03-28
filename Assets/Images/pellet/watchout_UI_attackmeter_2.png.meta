@@ -108,9 +108,9 @@ TextureImporter:
       name: watchout_UI_attackmeter_2_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 26
         y: 48
-        width: 128
+        width: 79
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -129,9 +129,9 @@ TextureImporter:
       name: watchout_UI_attackmeter_2_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 25
         y: 32
-        width: 128
+        width: 80
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -150,9 +150,9 @@ TextureImporter:
       name: watchout_UI_attackmeter_2_2
       rect:
         serializedVersion: 2
-        x: 0
+        x: 26
         y: 16
-        width: 128
+        width: 79
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

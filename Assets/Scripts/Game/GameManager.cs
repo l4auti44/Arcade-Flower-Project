@@ -13,12 +13,13 @@ public class GameManager : MonoBehaviour
     public static float numberPoints;
     private float time = 1f;
 
-
+    [SerializeField] private GameObject pelletMeter;
     public float left_right, top_bottom;
 
     public static float leftRightWall;
     public static float topBottom;
-    public static int pellets = 0;
+    [SerializeField] private int _pellets = 7;
+    public static int pellets;
     [SerializeField] private Image pelletsSllider;
 
     
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
         topBottom = top_bottom;
         points = GameObject.Find("points").GetComponent<TextMeshProUGUI>();
         numberPoints = 0;
-        pellets = 7;
+        pellets = _pellets;
         pelletsSllider.rectTransform.localScale = new Vector2(0f, 1f);
         points.text = numberPoints.ToString();
         refreshPelletsText();
@@ -90,5 +91,11 @@ public class GameManager : MonoBehaviour
     {
         numberPoints += amount;
         points.text = numberPoints.ToString();
+    }
+
+    public void notEnoughtPelletAnim()
+    {
+        pelletMeter.GetComponent<Animator>().SetTrigger("notEnoughtPellet");
+        pelletMeter.GetComponent<Animator>().SetTrigger("notEnoughtPellet");
     }
 }
