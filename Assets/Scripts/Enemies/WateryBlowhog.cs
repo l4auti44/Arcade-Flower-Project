@@ -6,9 +6,10 @@ using UnityEngine;
 public class WateryBlowhog : Enemy
 {
 
-    public float startAtackAfter = 2f;
-    public float lifeTime = 10f;
-    private float _startAtackAfter, _stopSplashTime = 0.8f;
+    [SerializeField] private float startAtackAfter = 2f;
+    [SerializeField] private float atackDuration = 0.8f;
+    [SerializeField] private float lifeTime = 10f;
+    private float _startAtackAfter, _atackDuration;
     private BoxCollider2D splashCol;
     private ParticleSystem waterParticles;
     private Animator wateryAnimator;
@@ -18,8 +19,8 @@ public class WateryBlowhog : Enemy
     void Start()
     {
         _startAtackAfter = startAtackAfter;
+        _atackDuration = atackDuration;
 
-        
 
         waterParticles = gameObject.GetComponentInChildren<ParticleSystem>();
         wateryAnimator = gameObject.GetComponentInChildren<Animator>();
@@ -82,14 +83,14 @@ public class WateryBlowhog : Enemy
             {
                 enableSplash();
                 flagExit = true;
-                _startAtackAfter = startAtackAfter;
+                _startAtackAfter = 999f;
             }
 
 
             if (flagExit)
             {
-                _stopSplashTime -= Time.deltaTime;
-                if (_stopSplashTime <= 0)
+                _atackDuration -= Time.deltaTime;
+                if (_atackDuration <= 0)
                 {
                     enableSplash();
                     wateryAnimator.SetBool("exit", true);
