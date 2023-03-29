@@ -743,7 +743,7 @@ MonoBehaviour:
   spawnTimePellet: 6
   enableBullet: 1
   enableWateryBlowHog: 1
-  enableAnoneBeetle: 1
+  enableAnoneBeetle: 0
   enablePellets: 1
 --- !u!4 &749067332
 Transform:
