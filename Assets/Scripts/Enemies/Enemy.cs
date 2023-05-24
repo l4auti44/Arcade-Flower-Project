@@ -13,10 +13,10 @@ public class Enemy : MonoBehaviour
     public bool killed = false;
     public int pointsForKill = 5;
     [SerializeField] private GameObject floatingPoints;
-    void Start()
-    {
 
-    }
+
+
+
 
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)

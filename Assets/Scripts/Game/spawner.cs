@@ -81,7 +81,7 @@ public class spawner : MonoBehaviour
             if (_spawnTimeAnodeBeetle <= 0)
             {
                 GameObject.Instantiate(anodeBeetle, anodeBeetle.transform.position, anodeBeetle.transform.rotation);
-                _spawnTimeAnodeBeetle = spawnTimeAnodeBeetle;
+                _spawnTimeAnodeBeetle = 1000f;
             }
 
             if (_spawnTimePellet <= 0)
