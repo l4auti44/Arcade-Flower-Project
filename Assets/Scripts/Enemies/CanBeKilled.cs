@@ -27,10 +27,18 @@ public class CanBeKilled : MonoBehaviour
                 killed = transform.parent.GetComponent<Breadbug>().Killed();
 
             }
+            else if (gameObject.name == "Beetle")
+            {
+                killed = transform.parent.GetComponent<AnodesBeetles>().Killed();
+
+            }
             else
             {
                 killed = gameObject.GetComponentInParent<Enemy>().Killed();
             }
+
+
+
 
             if (!killed)
             {
