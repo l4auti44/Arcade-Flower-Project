@@ -15,6 +15,8 @@ public class Breadbug : MonoBehaviour
     [SerializeField] private GameObject floatingPoints;
 
     [SerializeField] public int pointsForKill = 50;
+    private bool flagMusic = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +72,11 @@ public class Breadbug : MonoBehaviour
 
         if (_pellet.pelletTaken && !killed)
         {
+            if (!flagMusic)
+            {
+                GetComponent<AudioManager>().PlaySound("Rejection");
+                flagMusic = true;
+            }
             gameObject.GetComponentInChildren<Animator>().SetBool("pelletTaken", true);
             timer -= Time.deltaTime;
             if (timer <= 0)
@@ -80,7 +87,6 @@ public class Breadbug : MonoBehaviour
         {
             if (!backwards && !killed)
             {
-                
                 transform.localPosition = Vector2.MoveTowards(transform.localPosition, Vector2.zero, Time.deltaTime * speed);
 
                 if (transform.localPosition == Vector3.zero)
@@ -101,6 +107,9 @@ public class Breadbug : MonoBehaviour
 
             if (killed)
             {
+                
+                
+
                 timer2 -= Time.deltaTime;
                 if (timer2 <= 0)
                 {
@@ -140,6 +149,7 @@ public class Breadbug : MonoBehaviour
     {
         if (killed == false)
         {
+            GetComponent<AudioManager>().PlaySound("Killed");
             gameObject.GetComponentInChildren<Animator>().SetBool("killed", true);
             killed = true;
             GameObject.Find("GameController").GetComponent<GameManager>().addPoints(pointsForKill);

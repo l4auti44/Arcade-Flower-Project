@@ -81,6 +81,7 @@ public class playerManager : MonoBehaviour
 
     public void takeDamage()
     {
+        GetComponent<AudioManager>().PlaySound("Damage");
         playerAnimator.Play("takingDamage", 0, 0.0f);
         invincible = true;
     }

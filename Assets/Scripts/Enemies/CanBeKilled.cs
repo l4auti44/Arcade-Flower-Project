@@ -10,10 +10,12 @@ public class CanBeKilled : MonoBehaviour
     [SerializeField] private GameObject pinkman;
     private bool killed;
     private int _health;
+
     private void Start()
     {
         UI_Cursor = getSpriteRenderer("watchout_UI_cursor");
         UI_Cursor.enabled = false;
+
 
     }
 
@@ -34,6 +36,7 @@ public class CanBeKilled : MonoBehaviour
             }
             else
             {
+                
                 killed = gameObject.GetComponentInParent<Enemy>().Killed();
             }
 
@@ -84,7 +87,7 @@ public class CanBeKilled : MonoBehaviour
         else
         {
             GameObject.Find("GameController").GetComponent<GameManager>().notEnoughtPelletAnim();
-            Debug.Log("Not enougth pellets");
+            GameObject.Find("Player").GetComponent<AudioManager>().PlaySound("NotEnoughtPellets");
         }
         return false;
         

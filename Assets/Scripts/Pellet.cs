@@ -31,6 +31,7 @@ public class Pellet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject.Find("GameController").GetComponent<GameManager>().pickUpPellet();
+        GetComponent<AudioSource>().Play();
         this.GetComponent<SpriteRenderer>().enabled = false;
         this.GetComponent<CircleCollider2D>().enabled = false;
         pelletTaken = true;

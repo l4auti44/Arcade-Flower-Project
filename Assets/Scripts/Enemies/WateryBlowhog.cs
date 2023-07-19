@@ -16,6 +16,8 @@ public class WateryBlowhog : Enemy
 
     private bool flagExit = false;
 
+
+
     void Start()
     {
         _startAtackAfter = startAtackAfter;
@@ -131,6 +133,7 @@ public class WateryBlowhog : Enemy
 
     override public bool Killed()
     {
+        GetComponent<AudioManager>().PlaySound("Killed");
         wateryAnimator.SetBool("killed", true);
         if (splashCol.enabled == true)
         {

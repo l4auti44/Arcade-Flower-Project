@@ -12,7 +12,7 @@ public class AnodesBeetles : Enemy
     private SpriteRenderer areaAttackSprite;
     private Animator animator;
 
-    private float startSlplashAttack = 2f;
+    public float startSlplashAttack = 2f;
     private AnodeController controller;
     private bool flag1 = false;
     private void Awake()
@@ -29,10 +29,12 @@ public class AnodesBeetles : Enemy
     {
         if (!killed)
         {
+
             switch (controller.isSecondOneSpawned)
             {
                 case (false):
                     startSlplashAttack -= Time.deltaTime;
+                    
                     if (startSlplashAttack <= 0)
                     {
                         enableAreaAttack();
@@ -45,6 +47,7 @@ public class AnodesBeetles : Enemy
                     
                     if (controller.connected)
                     {
+                        GetComponent<AudioManager>().audioSource.loop = false;
                         animator.SetBool("areaAttack", false);
                         animator.SetBool("connect", true);
                         
@@ -58,12 +61,13 @@ public class AnodesBeetles : Enemy
         {
             if (!flag1)
             {
-                Debug.Log("destroy");
+                GetComponent<AudioManager>().audioSource.loop = false;
+                GetComponent<AudioManager>().PlaySound("Killed");
                 controller.OneIsKilled(this.gameObject);
                 flag1 = true;
-                
+
                 Destroy(gameObject, 2f);
-                
+
 
             }
             
@@ -71,10 +75,24 @@ public class AnodesBeetles : Enemy
         }
     }
 
-   
+    public void disableAreaAttack()
+    {
+
+
+        areaAttackSprite.enabled = false;
+        areaAttack.enabled = false;
+        animator.SetBool("areaAttack", false);
+        
+
+
+
+    }
     public void enableAreaAttack() {
 
 
+        GetComponent<AudioManager>().PlaySound("AreaAttack");
+        
+        
         areaAttackSprite.enabled = true;
         areaAttack.enabled = true;
         animator.SetBool("areaAttack", true);

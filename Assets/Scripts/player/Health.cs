@@ -57,6 +57,7 @@ public class Health : MonoBehaviour
 
     public void die()
     {
+        GetComponent<AudioManager>().PlaySound("Killed");
         checkHighscore();
         youDie.enabled = true;
         restartButton.enabled = true;

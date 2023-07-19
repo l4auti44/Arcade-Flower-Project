@@ -17,11 +17,12 @@ public class AnodeController : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        beetle2.SetActive(false);
-        lightning.SetActive(false);
+
     }
     void Start()
     {
+        beetle2.SetActive(false);
+        lightning.SetActive(false);
         SpawnPosition();
         _beetle1 = beetle1.GetComponent<AnodesBeetles>();
         _beetle2 = beetle2.GetComponent<AnodesBeetles>();
@@ -34,16 +35,26 @@ public class AnodeController : MonoBehaviour
         if (timeToSpawnSecondBeetle <= 0)
         {
             beetle2.SetActive(true);
-            
-            isSecondOneSpawned = true;
-            
+            beetle2.GetComponent<AnodesBeetles>().disableAreaAttack();
+            if (beetle1 != null)
+            {
+                if (!beetle1.GetComponent<AnodesBeetles>().killed)
+                {
+                    isSecondOneSpawned = true;
+                }
+            }
+
             timeToSpawnSecondBeetle = 1000f;
         }
-        if (isSecondOneSpawned)
+
+
+
+        if (isSecondOneSpawned && beetle1 != null)
         {
             timerForConnect -= Time.deltaTime;
             if (timerForConnect <= 0)
             {
+                GetComponent<AudioManager>().PlaySound("Lightning");
                 lightning.SetActive(true);
                 connected = true;
                 timerForConnect = 1000f;
@@ -111,29 +122,28 @@ public class AnodeController : MonoBehaviour
 
     public void OneIsKilled (GameObject beetle)
     {
-        
+        GetComponent<AudioManager>().audioSource.enabled = false;
         connected = false;
         isSecondOneSpawned = false;
         lightning.SetActive(false);
-        Debug.Log("before if null");
         if (beetle1 != null && beetle2 != null)
         {
             if (beetle == beetle1)
             {
-                Debug.Log("the one that is killed is beetle1");
-                _beetle2.enableAreaAttack();
-
+                if (beetle2.activeSelf)
+                {
+                    _beetle2.enableAreaAttack();
+                }
+                
             }
             else
             {
-                Debug.Log("the one that is killed is beetle2");
                 _beetle1.enableAreaAttack();
 
             }
         }
         else
         {
-            Debug.Log("destroy controller");
             Destroy(this, 4f);
         }
         
