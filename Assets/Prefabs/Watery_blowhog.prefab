@@ -194,7 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Killed
-    sound: {fileID: 8300000, guid: 4479e22ca9fc7954497b9ecbb3659cc4, type: 3}
+    sound: {fileID: 8300000, guid: 8063dbaddeb2bf24b93f99afa8ef5414, type: 3}
   audioSource: {fileID: 571673564308515479}
 --- !u!1 &351911397296989515
 GameObject:

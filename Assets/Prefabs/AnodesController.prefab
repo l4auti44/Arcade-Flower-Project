@@ -887,6 +887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4776869351718372013}
   - component: {fileID: 9053022808338085986}
+  - component: {fileID: 257130094240162551}
   m_Layer: 0
   m_Name: lightning
   m_TagString: Untagged
@@ -961,6 +962,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &257130094240162551
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7929590455763183183}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ff7361f2120cf548ad73dc236de0388, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8814975382992147454
 GameObject:
   m_ObjectHideFlags: 0
