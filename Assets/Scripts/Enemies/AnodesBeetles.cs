@@ -15,6 +15,8 @@ public class AnodesBeetles : Enemy
     public float startSlplashAttack = 2f;
     private AnodeController controller;
     private bool flag1 = false;
+
+    [SerializeField]private float timerDeath = 1f;
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -61,12 +63,18 @@ public class AnodesBeetles : Enemy
         {
             if (!flag1)
             {
-                GetComponent<AudioManager>().audioSource.loop = false;
-                GetComponent<AudioManager>().PlaySound("Killed");
-                controller.OneIsKilled(this.gameObject);
-                flag1 = true;
+                timerDeath -= Time.deltaTime;
+                if (timerDeath <= 0)
+                {
+                    GetComponent<AudioManager>().audioSource.loop = false;
+                    GetComponent<AudioManager>().PlaySound("Killed");
+                    controller.OneIsKilled(this.gameObject);
+                    flag1 = true;
 
-                Destroy(gameObject, 2f);
+                    Destroy(gameObject, 2f);
+                    timerDeath = 1000f;
+                }
+                
 
 
             }

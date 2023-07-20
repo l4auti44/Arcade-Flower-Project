@@ -864,7 +864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pelletMeter: {fileID: 2126683471}
   left_right: 12.8
-  top_bottom: 5
+  top_bottom: 5.08
   _pellets: 4
   pelletsSllider: {fileID: 1175575098}
 --- !u!1 &1074254032

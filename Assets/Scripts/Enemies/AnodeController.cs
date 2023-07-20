@@ -14,6 +14,9 @@ public class AnodeController : MonoBehaviour
     [HideInInspector] public bool connected = false;
     private AnodesBeetles _beetle1, _beetle2;
 
+    [SerializeField] private BoxCollider2D lightningBoxColl;
+    private float lightningDamage = 0.5f;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -56,6 +59,7 @@ public class AnodeController : MonoBehaviour
             {
                 GetComponent<AudioManager>().PlaySound("Lightning");
                 lightning.SetActive(true);
+                lightningBoxColl.enabled = true;
                 connected = true;
                 timerForConnect = 1000f;
             }
@@ -78,45 +82,47 @@ public class AnodeController : MonoBehaviour
         {
             //left
             case 0:
-                transform.position = new Vector3(-GameManager.leftRightWall - offset, randomY, 0f);
-                beetle2.transform.position = new Vector3(GameManager.leftRightWall + offset, randomY, 0f);
+                transform.position = new Vector3(-GameManager.leftRightWall, randomY, 0f);
+                beetle2.transform.position = new Vector3(GameManager.leftRightWall, randomY, 0f);
                 leftRight = true;
                 break;
 
             //top
             case 1:
                 transform.Rotate(new Vector3(0f, 0f, -90f));
-                transform.position = new Vector3(randomX, GameManager.topBottom + offset, 0f);
+                transform.position = new Vector3(randomX, GameManager.topBottom, 0f);
                 beetle2.transform.position = new Vector3(randomX, -GameManager.topBottom - offset, 0f);
                 
                 break;
             //bottom
             case 2:
                 transform.Rotate(new Vector3(0f, 0f, 90f));
-                transform.position = new Vector3(randomX, -GameManager.topBottom - offset, 0f);
-                beetle2.transform.position = new Vector3(randomX, GameManager.topBottom + offset, 0f);
+                transform.position = new Vector3(randomX, -GameManager.topBottom, 0f);
+                beetle2.transform.position = new Vector3(randomX, GameManager.topBottom, 0f);
                 break;
             //right
             case 3:
                 leftRight = true;
                 transform.Rotate(new Vector3(0f, 0f, 180f));
-                transform.position = new Vector3(GameManager.leftRightWall + offset, randomY, 0f);
-                beetle2.transform.position = new Vector3(-GameManager.leftRightWall - offset, randomY, 0f);
+                transform.position = new Vector3(GameManager.leftRightWall, randomY, 0f);
+                beetle2.transform.position = new Vector3(-GameManager.leftRightWall, randomY, 0f);
                 break;
         }
 
         //LIGHTNING
-        var offsetLight = 0.07f;
+        // TODO: MANUALLY HARD CODE THE OFFSET 10 and 4. IT WILL NOT WORK FOR OTHERS LEVELS! MAKE A VARIABLE
         if (leftRight)
         {
-            
-            var x = Convert.ToSingle(Math.Round((GameManager.leftRightWall / 4) / 0.32f));
-            lightningSR.size = new Vector2(0.32f * x + offsetLight, lightningSR.size.y);
+            lightningBoxColl.size = new Vector3(lightningBoxColl.size.x * 10f, 1f, 0f);
+            lightningBoxColl.offset = new Vector3(GameManager.leftRightWall, 0f, 0f);
+            lightning.transform.localPosition = new Vector2(0f, 0f);
+            lightningSR.size = new Vector2(0.32f * 10f, lightningSR.size.y);
         }
         else
         {
-            var x = Convert.ToSingle(Math.Round((GameManager.topBottom / 4) / 0.16f));
-            lightningSR.size = new Vector2(0.16f * x + offsetLight, lightningSR.size.y);
+            lightningBoxColl.size = new Vector3(lightningBoxColl.size.x * 4f, 1f, 0f);
+            lightningBoxColl.offset = new Vector3(GameManager.topBottom, 0f, 0f);
+            lightningSR.size = new Vector2(0.32f * 4f, lightningSR.size.y);
         }
     }
 
@@ -126,6 +132,7 @@ public class AnodeController : MonoBehaviour
         connected = false;
         isSecondOneSpawned = false;
         lightning.SetActive(false);
+        lightningBoxColl.enabled = false;
         if (beetle1 != null && beetle2 != null)
         {
             if (beetle == beetle1)
@@ -145,6 +152,22 @@ public class AnodeController : MonoBehaviour
         else
         {
             Destroy(this, 4f);
+        }
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.tag == "Player")
+        {
+
+            if (!collision.GetComponent<playerManager>().invincible)
+            {
+                collision.gameObject.GetComponent<playerManager>().takeDamage();
+                collision.gameObject.GetComponent<Health>().decreaseHealth(lightningDamage);
+            }
+
         }
         
     }
