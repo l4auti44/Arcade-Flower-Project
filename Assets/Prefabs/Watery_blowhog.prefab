@@ -195,6 +195,8 @@ MonoBehaviour:
   sounds:
   - name: Killed
     sound: {fileID: 8300000, guid: 8063dbaddeb2bf24b93f99afa8ef5414, type: 3}
+  - name: Attack
+    sound: {fileID: 8300000, guid: a8f1730e8c7be4941b7e4356bd3144eb, type: 3}
   audioSource: {fileID: 571673564308515479}
 --- !u!1 &351911397296989515
 GameObject:

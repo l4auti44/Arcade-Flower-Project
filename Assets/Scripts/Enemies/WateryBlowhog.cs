@@ -85,6 +85,7 @@ public class WateryBlowhog : Enemy
             {
                 enableSplash();
                 flagExit = true;
+                GetComponent<AudioManager>().PlaySound("Attack");
                 _startAtackAfter = 999f;
             }
 
@@ -119,20 +120,19 @@ public class WateryBlowhog : Enemy
         {
             waterParticles.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
             splashCol.enabled = false;
-
             
+
         }
         else
         {
             waterParticles.Play();
             splashCol.enabled = true;
-
-            
         }
     }
 
     override public bool Killed()
     {
+        
         GetComponent<AudioManager>().PlaySound("Killed");
         wateryAnimator.SetBool("killed", true);
         if (splashCol.enabled == true)
