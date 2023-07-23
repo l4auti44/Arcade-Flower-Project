@@ -151,6 +151,7 @@ public class AnodeController : MonoBehaviour
         }
         else
         {
+            spawner.Instance.ResetAnodeBeetle();
             Destroy(this, 4f);
         }
         

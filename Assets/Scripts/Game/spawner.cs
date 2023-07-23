@@ -22,7 +22,8 @@ public class spawner : MonoBehaviour
     private bool enableScript = true;
 
     static public int bulletAmount = 0;
-    
+
+    private bool anodeBeetleSpawned = false;
 
 
     private void Awake()
@@ -90,7 +91,13 @@ public class spawner : MonoBehaviour
                 _spawnTimePellet = spawnTimePellet;
             }
         }
-        
+       
+    }
+
+    public void ResetAnodeBeetle()
+    {
+        anodeBeetleSpawned = false;
+        _spawnTimeAnodeBeetle = spawnTimeAnodeBeetle;
     }
 
 }

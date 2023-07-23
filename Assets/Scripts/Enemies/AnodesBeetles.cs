@@ -70,7 +70,6 @@ public class AnodesBeetles : Enemy
                     GetComponent<AudioManager>().PlaySound("Killed");
                     controller.OneIsKilled(this.gameObject);
                     flag1 = true;
-
                     Destroy(gameObject, 2f);
                     timerDeath = 1000f;
                 }
