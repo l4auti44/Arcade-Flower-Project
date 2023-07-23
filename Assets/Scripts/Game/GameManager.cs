@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
 
 
     private TextMeshProUGUI points;
-    public static float numberPoints;
+    public static int numberPoints;
+    [SerializeField] private string _playerName = "TEST";
+    public static string playerName;
     private float time = 1f;
 
     [SerializeField] private GameObject pelletMeter;
@@ -21,13 +23,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _pellets = 7;
     public static int pellets;
     [SerializeField] private Image pelletsSllider;
-
+    
     
 
     // Start is called before the first frame update
     void Start()
     {
-
+        playerName = _playerName;
         leftRightWall = left_right;
         topBottom = top_bottom;
         points = GameObject.Find("points").GetComponent<TextMeshProUGUI>();
