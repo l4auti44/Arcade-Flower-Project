@@ -840,7 +840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3593267414456720384, guid: b4b443ca0c7d75c468f05c52ee5dc4c3, type: 3}
   bulletsParent: {fileID: 1074254032}
-  spawnTimeBullet: 1
+  spawnTimeBullet: 0.92
   wateryBlowHog: {fileID: 351911397159864849, guid: a6dcccc1bb9623b42b09b5efe8485c8b, type: 3}
   spawnTimeWatery: 3
   anodeBeetle: {fileID: 2627635639143233935, guid: aebfd285c0a39df42b449a9308c1903a, type: 3}
@@ -879,10 +879,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableBulletDifficulty: 1
-  bulletLimitTime: 120
-  bulletMinSpawnRate: 0.15
+  bulletLimitTime: 600
+  bulletMinSpawnRate: 0.14
   bulletDefaultSpeed: 3.2
-  bulletMaxSpeed: 5
+  bulletMaxSpeed: 4
   enableWateryDifficulty: 1
   wateryLimitTime: 120
   wateryMinSpawnRate: 1

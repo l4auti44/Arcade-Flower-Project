@@ -49,11 +49,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  health: 1
+  health: 3
   killed: 0
-  pointsForKill: 5
+  pointsForKill: 150
   floatingPoints: {fileID: 3921009216467326958, guid: 3f8643fb3f7267545998465d54e8b1e8, type: 3}
   startSlplashAttack: 2
+  timerDeath: 1
 --- !u!58 &1220794007531961098
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1059,11 +1060,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  health: 1
+  health: 3
   killed: 0
-  pointsForKill: 5
+  pointsForKill: 150
   floatingPoints: {fileID: 3921009216467326958, guid: 3f8643fb3f7267545998465d54e8b1e8, type: 3}
   startSlplashAttack: 2
+  timerDeath: 1
 --- !u!58 &4089098543825852242
 CircleCollider2D:
   m_ObjectHideFlags: 0
