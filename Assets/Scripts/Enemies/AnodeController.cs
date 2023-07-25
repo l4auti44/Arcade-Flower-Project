@@ -15,7 +15,7 @@ public class AnodeController : MonoBehaviour
     private AnodesBeetles _beetle1, _beetle2;
 
     [SerializeField] private BoxCollider2D lightningBoxColl;
-    private float lightningDamage = 0.5f;
+    [SerializeField] private int lightningDamage = 1;
 
     // Start is called before the first frame update
     private void Awake()
