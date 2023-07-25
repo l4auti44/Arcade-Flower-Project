@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   health: 1
+  killed: 0
   pointsForKill: 5
   floatingPoints: {fileID: 0}
   speed: 3.2

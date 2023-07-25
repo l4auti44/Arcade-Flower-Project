@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Runtime.ConstrainedExecution;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,7 +11,7 @@ public class spawner : MonoBehaviour
 
     public GameObject bullet;
     public GameObject bulletsParent;
-    public float spawnTimeBullet = 0.5f;
+    public float spawnTimeBullet = 1f;
     public GameObject wateryBlowHog;
     public float spawnTimeWatery = 6f;
     public GameObject anodeBeetle;
@@ -36,13 +39,17 @@ public class spawner : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
+
+    
     // Start is called before the first frame update
     void Start()
     {
+        
         _spawnTimeBullet = spawnTimeBullet;
         _spawnTimeWatery = spawnTimeWatery;
         _spawnTimeAnodeBeetle = spawnTimeAnodeBeetle;
         _spawnTimePellet = spawnTimePellet;
+
     }
 
     
@@ -91,7 +98,7 @@ public class spawner : MonoBehaviour
                 _spawnTimePellet = spawnTimePellet;
             }
         }
-       
+
     }
 
     public void ResetAnodeBeetle()
