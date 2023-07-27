@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerName = SceneController.Instance._playerName;
+        playerName = SceneController._playerName;
         leftRightWall = left_right;
         topBottom = top_bottom;
         points = GameObject.Find("points").GetComponent<TextMeshProUGUI>();
