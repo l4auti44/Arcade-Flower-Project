@@ -1193,12 +1193,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568995aec190aec4db8a84d38e23be79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerName: PLAYER
   pelletMeter: {fileID: 2126683471}
   left_right: 12.8
   top_bottom: 5.08
   _pellets: 4
   pelletsSllider: {fileID: 1175575098}
+  pointsToExtraLife: 1000
+  pointsPerSecond: 10
 --- !u!1 &1074254032
 GameObject:
   m_ObjectHideFlags: 0
