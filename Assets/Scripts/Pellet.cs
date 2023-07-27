@@ -8,6 +8,7 @@ public class Pellet : MonoBehaviour
     [SerializeField] private float timeForSpawnBreadbug = 5f;
     private bool spawnedBreedbug = false;
     public bool pelletTaken = false;
+    [SerializeField] private int points = 30;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +32,7 @@ public class Pellet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GetComponent<AudioSource>().Play();
-        GameObject.Find("GameController").GetComponent<GameManager>().pickUpPellet();
+        GameObject.Find("GameController").GetComponent<GameManager>().pickUpPellet(points);
         this.GetComponent<SpriteRenderer>().enabled = false;
         this.GetComponent<CircleCollider2D>().enabled = false;
         pelletTaken = true;

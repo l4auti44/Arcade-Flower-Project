@@ -63,14 +63,14 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void pickUpPellet()
+    public void pickUpPellet(int points)
     {
         if (pellets < 7)
         {
             pellets++;
             refreshPelletsText();
         }
-        
+        addPoints(points);
     }
 
     public void usePellets(int amount) 

@@ -102,6 +102,7 @@ MonoBehaviour:
   breadbug: {fileID: 2890588012284470403, guid: 841275f6070892347933aee8fe66252f, type: 3}
   timeForSpawnBreadbug: 1.61
   pelletTaken: 0
+  points: 30
 --- !u!58 &7197753540995731971
 CircleCollider2D:
   m_ObjectHideFlags: 0
