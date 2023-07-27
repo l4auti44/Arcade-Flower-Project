@@ -21,7 +21,12 @@ public class HighscoreTable : MonoBehaviour
         entryTemplate = entryContainer.Find("HighscoreEntryTemplate");
 
         entryTemplate.gameObject.SetActive(false);
-
+        var str = PlayerPrefs.GetString("highscoreTable");
+        if (string.IsNullOrEmpty(str))
+        {
+            //{"highscoreEntryList":[]}
+            PlayerPrefs.SetString("highscoreTable", "{\"highscoreEntryList\":[]}");
+        }
        
     }
 
