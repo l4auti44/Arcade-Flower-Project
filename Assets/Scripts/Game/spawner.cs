@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class spawner : MonoBehaviour
 {
-    public static spawner Instance;
 
     public GameObject bullet;
     public GameObject bulletsParent;
@@ -29,16 +28,6 @@ public class spawner : MonoBehaviour
     private bool anodeBeetleSpawned = false;
 
 
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
 
     
     // Start is called before the first frame update

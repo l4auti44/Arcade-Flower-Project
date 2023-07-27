@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,12 +22,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _pellets = 7;
     public static int pellets;
     [SerializeField] private Image pelletsSllider;
-
-
+    [SerializeField] private int pointsToExtraLife = 1000;
+    [SerializeField] private int pointsPerSecond = 10;
+    private int _pointsToExtraLife;
+    private GameObject _player;
     // Start is called before the first frame update
     void Start()
     {
-        playerName = SceneController._playerName;
+        _player = GameObject.Find("Player");
+        _pointsToExtraLife = pointsToExtraLife;
+        playerName = PlayerPrefs.GetString("PlayerName");
         leftRightWall = left_right;
         topBottom = top_bottom;
         points = GameObject.Find("points").GetComponent<TextMeshProUGUI>();
@@ -35,6 +40,8 @@ public class GameManager : MonoBehaviour
         pelletsSllider.rectTransform.localScale = new Vector2(0f, pelletsSllider.rectTransform.localScale.y);
         points.text = numberPoints.ToString();
         refreshPelletsText();
+
+   
     }
 
     // Update is called once per frame
@@ -44,12 +51,15 @@ public class GameManager : MonoBehaviour
 
         if (time <= 0)
         {
-            numberPoints += 10;
-            points.text = numberPoints.ToString();
+            addPoints(pointsPerSecond);
             time += 1;
         }
 
-
+        if (_pointsToExtraLife <= 0)
+        {
+            _pointsToExtraLife = pointsToExtraLife + _pointsToExtraLife;
+            _player.GetComponent<Health>().IncreaseHealth(1);
+        }
 
     }
 
@@ -89,6 +99,7 @@ public class GameManager : MonoBehaviour
     public void addPoints(int amount)
     {
         numberPoints += amount;
+        _pointsToExtraLife -= amount;
         points.text = numberPoints.ToString();
     }
 

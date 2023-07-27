@@ -46,9 +46,10 @@ public class Health : MonoBehaviour
     
     }
 
-    public void increaseHealth(float amount)
+    public void IncreaseHealth(float amount)
     {
-
+        health += amount;
+        refreshText();
     }
 
     public void refreshText()

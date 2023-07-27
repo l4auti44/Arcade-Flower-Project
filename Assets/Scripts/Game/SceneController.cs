@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class SceneController : MonoBehaviour
 {
     public static SceneController Instance;
-    public static string _playerName = "PLAYER";
+
     
     private void Awake()
     {
@@ -34,12 +34,11 @@ public class SceneController : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
 
-            var playerNameText = GameObject.Find("TextPlayerName").GetComponent<TextMeshProUGUI>().text;
+            var playerNameText = GameObject.Find("PlayerName").GetComponent<TMP_InputField>().text;
             
             if (playerNameText != "PLAYER")
             {
-                _playerName = playerNameText;
-                Debug.Log("PlayerName: " + _playerName.ToString());
+                PlayerPrefs.SetString("PlayerName", playerNameText);
             }
         }
     }
