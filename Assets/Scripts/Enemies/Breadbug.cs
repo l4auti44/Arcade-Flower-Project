@@ -127,7 +127,6 @@ public class Breadbug : MonoBehaviour
                         transform.position = Vector2.MoveTowards(transform.position, new Vector2(30, transform.position.y), Time.deltaTime * speed * 5);
                     }
                 }
-                
 
             }
             
