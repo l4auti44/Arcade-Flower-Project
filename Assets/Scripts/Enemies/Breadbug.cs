@@ -72,11 +72,7 @@ public class Breadbug : MonoBehaviour
 
         if (_pellet.pelletTaken && !killed)
         {
-            if (!flagMusic)
-            {
-                GetComponent<AudioManager>().PlaySound("Rejection");
-                flagMusic = true;
-            }
+
             gameObject.GetComponentInChildren<Animator>().SetBool("pelletTaken", true);
             timer -= Time.deltaTime;
             if (timer <= 0)
@@ -136,6 +132,14 @@ public class Breadbug : MonoBehaviour
             }
             
 
+        }
+        if (backwards && !killed && _pellet.pelletTaken)
+        {
+            if (!flagMusic)
+            {
+                GetComponent<AudioManager>().PlaySound("Rejection");
+                flagMusic = true;
+            }
         }
 
     }
