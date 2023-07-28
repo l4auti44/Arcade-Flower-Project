@@ -7,6 +7,7 @@ using UnityEngine;
 public class FloatingPoints : MonoBehaviour
 {
     private TextMeshPro text;
+    [SerializeField] private Color color;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class FloatingPoints : MonoBehaviour
         
        
         text = gameObject.GetComponent<TextMeshPro>();
+        //text.col = color;
         text.text = points.ToString();
         Destroy(gameObject, 1);
         transform.localPosition += new Vector3(0, 0.5f, 0);

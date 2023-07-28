@@ -23,6 +23,11 @@ public class SceneController : MonoBehaviour
     }
 
 
+    public static void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Quit!");
+    }
 
     public static void SceneLoader(string name)
     {

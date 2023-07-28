@@ -19,20 +19,6 @@ public class Enemy : MonoBehaviour
 
 
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-
-            if (!collision.GetComponent<playerManager>().invincible)
-            {
-                collision.gameObject.GetComponent<playerManager>().takeDamage();
-                collision.gameObject.GetComponent<Health>().decreaseHealth(damage);
-            }
-
-        }
-    }
-
     protected virtual SpriteRenderer getSpriteRenderer(String name)
     {
         SpriteRenderer[] childrens = this.GetComponentsInChildren<SpriteRenderer>();

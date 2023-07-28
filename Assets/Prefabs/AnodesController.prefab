@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8613017489778852687}
   m_Layer: 2
   m_Name: Beetle1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 7864497087044296969}
   m_Layer: 2
   m_Name: AnodesController
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,6 +262,7 @@ MonoBehaviour:
   isSecondOneSpawned: 0
   connected: 0
   lightningBoxColl: {fileID: 7864497087044296969}
+  lightningDamage: 1
 --- !u!114 &7943863806508728898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -919,7 +920,7 @@ GameObject:
   - component: {fileID: 257130094240162551}
   m_Layer: 0
   m_Name: lightning
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1026,7 +1027,7 @@ GameObject:
   - component: {fileID: 7655108253836799323}
   m_Layer: 2
   m_Name: Beetle2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

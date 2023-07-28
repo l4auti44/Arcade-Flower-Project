@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         {
             _pointsToExtraLife = pointsToExtraLife + _pointsToExtraLife;
             _player.GetComponent<Health>().IncreaseHealth(1);
+            GetComponent<AudioSource>().Play();
         }
 
     }

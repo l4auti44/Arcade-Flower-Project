@@ -7,7 +7,7 @@ public class Pellet : MonoBehaviour
     [SerializeField] private GameObject breadbug;
     [SerializeField] private float timeForSpawnBreadbug = 5f;
     private bool spawnedBreedbug = false;
-    public bool pelletTaken = false;
+    [HideInInspector] public bool pelletTaken = false;
     [SerializeField] private int points = 30;
     // Start is called before the first frame update
     void Start()

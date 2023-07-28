@@ -9,7 +9,7 @@ public class playerManager : MonoBehaviour
 
     private SpriteRenderer playerSprite;
     private Animator playerAnimator;
-    public bool invincible = false;
+    [HideInInspector] public bool invincible = false;
     [SerializeField] private float timeInvincible = 1.5f;
     private float offset = 0.3f;
     
@@ -84,6 +84,60 @@ public class playerManager : MonoBehaviour
         GetComponent<AudioManager>().PlaySound("Damage");
         playerAnimator.Play("takingDamage", 0, 0.0f);
         invincible = true;
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+
+            if (!invincible)
+            {
+                takeDamage();
+                var damage = collision.gameObject.GetComponent<Enemy>().damage;
+                gameObject.GetComponent<Health>().decreaseHealth(damage);
+            }
+
+        }
+        if (collision.gameObject.tag == "Bullet")
+        {
+
+            if (!invincible)
+            {
+                takeDamage();
+                var damage = collision.gameObject.GetComponent<Bullet>().damage;
+                gameObject.GetComponent<Health>().decreaseHealth(damage);
+                Destroy(collision.gameObject);
+            }
+
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+
+            if (!invincible)
+            {
+                takeDamage();
+                var damage = collision.gameObject.GetComponent<Enemy>().damage;
+                gameObject.GetComponent<Health>().decreaseHealth(damage);
+            }
+
+        }
+        if (collision.gameObject.tag == "Bullet")
+        {
+
+            if (!invincible)
+            {
+                takeDamage();
+                var damage = collision.gameObject.GetComponent<Bullet>().damage;
+                gameObject.GetComponent<Health>().decreaseHealth(damage);
+                Destroy(collision.gameObject);
+            }
+
+        }
+
+    
     }
 
 }

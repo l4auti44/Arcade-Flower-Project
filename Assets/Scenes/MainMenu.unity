@@ -657,7 +657,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: options
+  m_text: quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 518f0d3886e717846bbdfa17bef8fc15, type: 2}
   m_sharedMaterial: {fileID: 1578210992218330427, guid: 518f0d3886e717846bbdfa17bef8fc15, type: 2}
@@ -950,7 +950,7 @@ GameObject:
   - component: {fileID: 1228703076}
   - component: {fileID: 1228703075}
   m_Layer: 5
-  m_Name: OptionButton
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1023,20 +1023,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 322058827}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: ChangeName
+        m_MethodName: QuitGame
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 322058827}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: SceneLoader
-        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
