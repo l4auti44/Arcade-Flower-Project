@@ -15,7 +15,7 @@ public class AnodeController : MonoBehaviour
     private AnodesBeetles _beetle1, _beetle2;
 
     [SerializeField] private BoxCollider2D lightningBoxColl;
-    [SerializeField] private int lightningDamage = 1;
+    [SerializeField] public int lightningDamage = 1;
 
     // Start is called before the first frame update
     private void Awake()
@@ -157,19 +157,4 @@ public class AnodeController : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        if (collision.gameObject.tag == "Player")
-        {
-
-            if (!collision.GetComponent<playerManager>().invincible)
-            {
-                collision.gameObject.GetComponent<playerManager>().takeDamage();
-                collision.gameObject.GetComponent<Health>().decreaseHealth(lightningDamage);
-            }
-
-        }
-        
-    }
 }

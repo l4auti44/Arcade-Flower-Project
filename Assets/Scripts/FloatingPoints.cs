@@ -8,6 +8,7 @@ public class FloatingPoints : MonoBehaviour
 {
     private TextMeshPro text;
     [SerializeField] private Color color;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +16,16 @@ public class FloatingPoints : MonoBehaviour
         if (gameObject.GetComponentInParent<Enemy>() != null)
         {
             points = gameObject.GetComponentInParent<Enemy>().pointsForKill;
-        }
-        else
+        }else if (gameObject.GetComponentInParent<Breadbug>() != null)
         {
             points = gameObject.GetComponentInParent<Breadbug>().pointsForKill;
         }
+        else
+        {
+            points = gameObject.GetComponentInParent<Pellet>().points;
+            //this.transform.localScale = new Vector2(0.2f, 0.2f);
+        }
+     
         
        
         text = gameObject.GetComponent<TextMeshPro>();

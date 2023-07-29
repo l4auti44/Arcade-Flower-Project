@@ -132,16 +132,24 @@ public class WateryBlowhog : Enemy
 
     override public bool Killed()
     {
-        
-        GetComponent<AudioManager>().PlaySound("Killed");
-        wateryAnimator.SetBool("killed", true);
-        if (splashCol.enabled == true)
+        if (killed == false)
         {
-            enableSplash();
+            GetComponent<AudioManager>().PlaySound("Killed");
+            wateryAnimator.SetBool("killed", true);
+            if (splashCol.enabled == true)
+            {
+                enableSplash();
+            }
+            GameObject.Find("GameController").GetComponent<GameManager>().addPoints(pointsForKill);
+            GameObject.Instantiate(floatingPoints, transform.position, Quaternion.identity, transform);
+            killed = true;
+            return false;
         }
-        base.Killed();
-        return false;
-        
+        else
+        {
+            return true;
+        }
+
     }
 
 }

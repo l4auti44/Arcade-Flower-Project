@@ -93,9 +93,19 @@ public class playerManager : MonoBehaviour
             if (!invincible)
             {
                 takeDamage();
-                var damage = collision.gameObject.GetComponent<Enemy>().damage;
+                var damage = 0f;
+                if (collision.gameObject.GetComponent<Enemy>() == null)
+                {
+                    damage = collision.gameObject.GetComponent<AnodeController>().lightningDamage;
+                }
+                else
+                {
+                    damage = collision.gameObject.GetComponent<Enemy>().damage;
+                }
+                
                 gameObject.GetComponent<Health>().decreaseHealth(damage);
             }
+
 
         }
         if (collision.gameObject.tag == "Bullet")
@@ -119,7 +129,15 @@ public class playerManager : MonoBehaviour
             if (!invincible)
             {
                 takeDamage();
-                var damage = collision.gameObject.GetComponent<Enemy>().damage;
+                var damage = 0f;
+                if (collision.gameObject.GetComponent<Enemy>() == null)
+                {
+                    damage = collision.gameObject.GetComponent<AnodeController>().lightningDamage;
+                }
+                else
+                {
+                    damage = collision.gameObject.GetComponent<Enemy>().damage;
+                }
                 gameObject.GetComponent<Health>().decreaseHealth(damage);
             }
 

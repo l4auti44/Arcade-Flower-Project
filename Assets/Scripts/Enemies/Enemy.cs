@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
 
     [HideInInspector] public bool killed = false;
     public int pointsForKill = 5;
-    [SerializeField] private GameObject floatingPoints;
+    [SerializeField] public GameObject floatingPoints;
 
 
 

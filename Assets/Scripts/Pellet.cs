@@ -8,7 +8,8 @@ public class Pellet : MonoBehaviour
     [SerializeField] private float timeForSpawnBreadbug = 5f;
     private bool spawnedBreedbug = false;
     [HideInInspector] public bool pelletTaken = false;
-    [SerializeField] private int points = 30;
+    [SerializeField] public int points = 30;
+    [SerializeField] private GameObject floatingPoints;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,8 @@ public class Pellet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        var floatingPo = Instantiate(floatingPoints, transform.position, Quaternion.identity, transform);
+        floatingPo.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
         GetComponent<AudioSource>().Play();
         GameObject.Find("GameController").GetComponent<GameManager>().pickUpPellet(points);
         this.GetComponent<SpriteRenderer>().enabled = false;
@@ -38,7 +41,7 @@ public class Pellet : MonoBehaviour
         pelletTaken = true;
         if (!spawnedBreedbug)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 1f);
         }
         
     }
