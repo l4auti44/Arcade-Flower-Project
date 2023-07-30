@@ -1962,9 +1962,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableBulletDifficulty: 1
-  bulletLimitTime: 600
-  bulletMinSpawnRate: 0.14
-  bulletDefaultSpeed: 3.2
+  bulletLimitTime: 120
+  bulletMinSpawnRate: 0.37
+  bulletDefaultSpeed: 3
   bulletMaxSpeed: 4
   enableWateryDifficulty: 1
   wateryLimitTime: 120
