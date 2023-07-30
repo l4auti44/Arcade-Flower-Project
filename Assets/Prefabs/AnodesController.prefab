@@ -51,7 +51,7 @@ MonoBehaviour:
   damage: 1
   health: 3
   killed: 0
-  pointsForKill: 150
+  pointsForKill: 300
   floatingPoints: {fileID: 3921009216467326958, guid: 3f8643fb3f7267545998465d54e8b1e8, type: 3}
   startSlplashAttack: 2
   timerDeath: 1
@@ -1063,7 +1063,7 @@ MonoBehaviour:
   damage: 1
   health: 3
   killed: 0
-  pointsForKill: 150
+  pointsForKill: 300
   floatingPoints: {fileID: 3921009216467326958, guid: 3f8643fb3f7267545998465d54e8b1e8, type: 3}
   startSlplashAttack: 2
   timerDeath: 1
