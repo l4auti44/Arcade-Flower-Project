@@ -146,7 +146,7 @@ public class HighscoreTable : MonoBehaviour
 
                 if (GameManager.numberPoints > highscoreEntry.score)
                 {
-                    AddHighscoreEntry(GameManager.numberPoints, "TEST");
+                    AddHighscoreEntry(GameManager.numberPoints, GameManager.playerName);
                     
                     break;
                 }

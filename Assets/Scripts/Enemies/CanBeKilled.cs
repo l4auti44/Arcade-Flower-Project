@@ -22,7 +22,7 @@ public class CanBeKilled : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (HaveEnoughtPellets())
+        if (HaveEnoughtPellets() && !PauseMenu.gameIsPaused)
         {
             if (gameObject.name == "breadbug_spritesheet_0")
             {
@@ -95,7 +95,11 @@ public class CanBeKilled : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        UI_Cursor.enabled = true;
+        if (!PauseMenu.gameIsPaused)
+        {
+            UI_Cursor.enabled = true;
+        }
+        
     }
     private void OnMouseExit()
     {
