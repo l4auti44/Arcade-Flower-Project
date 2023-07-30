@@ -234,7 +234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -116.35486, y: -85.79999}
+  m_AnchoredPosition: {x: -116.35498, y: -85.80005}
   m_SizeDelta: {x: 201, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &30024025
@@ -879,9 +879,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableBulletDifficulty: 1
-  bulletLimitTime: 600
-  bulletMinSpawnRate: 0.14
-  bulletDefaultSpeed: 3.2
+  bulletLimitTime: 120
+  bulletMinSpawnRate: 0.37
+  bulletDefaultSpeed: 3.1
   bulletMaxSpeed: 4
   enableWateryDifficulty: 1
   wateryLimitTime: 120
