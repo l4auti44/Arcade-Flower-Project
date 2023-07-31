@@ -13,8 +13,8 @@ public class WateryBlowhog : Enemy
     private BoxCollider2D splashCol;
     private ParticleSystem waterParticles;
     private Animator wateryAnimator;
-
-    private bool flagExit = false;
+    private float timer1 = 1f;
+    private bool flagExit = false, flagdead = false;
 
 
 
@@ -78,8 +78,25 @@ public class WateryBlowhog : Enemy
     {
         _startAtackAfter -= Time.deltaTime;
         lifeTime -= Time.deltaTime;
-        
-        if (!killed)
+
+        if (killed)
+        {
+            timer1 -= Time.deltaTime;
+            if (timer1 <= 0 && !flagdead)
+            {
+                GetComponent<AudioManager>().PlaySound("Killed");
+                wateryAnimator.SetBool("killed", true);
+                if (splashCol.enabled == true)
+                {
+                    enableSplash();
+                }
+                GameObject.Find("GameController").GetComponent<GameManager>().addPoints(pointsForKill);
+                GameObject.Instantiate(floatingPoints, transform.position, Quaternion.identity, transform);
+                flagdead = true;
+            }
+        }
+
+        if (!flagdead)
         {
             if (_startAtackAfter <= 0f)
             {
@@ -134,14 +151,6 @@ public class WateryBlowhog : Enemy
     {
         if (killed == false)
         {
-            GetComponent<AudioManager>().PlaySound("Killed");
-            wateryAnimator.SetBool("killed", true);
-            if (splashCol.enabled == true)
-            {
-                enableSplash();
-            }
-            GameObject.Find("GameController").GetComponent<GameManager>().addPoints(pointsForKill);
-            GameObject.Instantiate(floatingPoints, transform.position, Quaternion.identity, transform);
             killed = true;
             return false;
         }

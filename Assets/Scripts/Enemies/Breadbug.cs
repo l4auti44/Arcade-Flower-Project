@@ -10,12 +10,12 @@ public class Breadbug : MonoBehaviour
     private Pellet _pellet;
     private bool backwards = false;
     private Vector2 startGlobalPosition;
-    private float timer = 3.6f, timer2 = 1.85f;
+    private float timer = 3.6f, timer2 = 2.85f, timer3 = 1f;
     private bool killed = false;
     [SerializeField] private GameObject floatingPoints;
 
     [SerializeField] public int pointsForKill = 50;
-    private bool flagMusic = false;
+    private bool flagMusic = false, flagDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -81,7 +81,7 @@ public class Breadbug : MonoBehaviour
         }
         else
         {
-            if (!backwards && !killed)
+            if (!backwards && !flagDead)
             {
                 transform.localPosition = Vector2.MoveTowards(transform.localPosition, Vector2.zero, Time.deltaTime * speed);
 
@@ -93,7 +93,7 @@ public class Breadbug : MonoBehaviour
             }
             else
             {
-                if (!killed)
+                if (!flagDead)
                 {
                     //DRAGGING PELLET
                     transform.parent.position = Vector2.MoveTowards(transform.parent.position, startGlobalPosition, Time.deltaTime * globalSpeedDragging);
@@ -103,8 +103,16 @@ public class Breadbug : MonoBehaviour
 
             if (killed)
             {
-                
-                
+
+                timer3 -= Time.deltaTime;
+                if (timer3 <= 0 && !flagDead)
+                {
+                    GameObject.Instantiate(floatingPoints, transform.position, Quaternion.identity, transform);
+                    GetComponent<AudioManager>().PlaySound("Killed");
+                    gameObject.GetComponentInChildren<Animator>().SetBool("killed", true);
+                    GameObject.Find("GameController").GetComponent<GameManager>().addPoints(pointsForKill);
+                    flagDead = true;
+                }
 
                 timer2 -= Time.deltaTime;
                 if (timer2 <= 0)
@@ -132,7 +140,7 @@ public class Breadbug : MonoBehaviour
             
 
         }
-        if (backwards && !killed && _pellet.pelletTaken)
+        if (backwards && !flagDead && _pellet.pelletTaken)
         {
             if (!flagMusic)
             {
@@ -152,11 +160,8 @@ public class Breadbug : MonoBehaviour
     {
         if (killed == false)
         {
-            GetComponent<AudioManager>().PlaySound("Killed");
-            gameObject.GetComponentInChildren<Animator>().SetBool("killed", true);
+            
             killed = true;
-            GameObject.Find("GameController").GetComponent<GameManager>().addPoints(pointsForKill);
-            GameObject.Instantiate(floatingPoints, transform.position, Quaternion.identity, transform);
             return false;
         }
         else
