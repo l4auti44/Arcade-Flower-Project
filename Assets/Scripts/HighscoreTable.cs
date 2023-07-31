@@ -10,7 +10,7 @@ public class HighscoreTable : MonoBehaviour
     private Transform entryContainer;
     private Transform entryTemplate;
     private List<Transform> highscoreEntryTransformList;
-    
+    [SerializeField] private Sprite[] trophies;
 
 
     private void Awake()
@@ -90,14 +90,42 @@ public class HighscoreTable : MonoBehaviour
         entryTransform.Find("nameText").GetComponent<TextMeshProUGUI>().text = name;
 
         entryTransform.Find("Background").gameObject.SetActive(rank % 2 == 1);
-
-        if (rank == 1)
+        if (highscoreEntry.score == GameManager.numberPoints)
         {
             entryTransform.Find("posText").GetComponent<TextMeshProUGUI>().color = Color.green;
             entryTransform.Find("scoreText").GetComponent<TextMeshProUGUI>().color = Color.green;
             entryTransform.Find("nameText").GetComponent<TextMeshProUGUI>().color = Color.green;
         }
-        
+        if (rank == 1)
+        {
+            entryTransform.Find("posText").GetComponent<TextMeshProUGUI>().fontSize = 20f;
+            entryTransform.Find("scoreText").GetComponent<TextMeshProUGUI>().fontSize = 20f;
+            entryTransform.Find("nameText").GetComponent<TextMeshProUGUI>().fontSize = 20f;
+        }
+        if (rank == 2)
+        {
+            entryTransform.Find("posText").GetComponent<TextMeshProUGUI>().fontSize = 18f;
+            entryTransform.Find("scoreText").GetComponent<TextMeshProUGUI>().fontSize = 18f;
+            entryTransform.Find("nameText").GetComponent<TextMeshProUGUI>().fontSize = 18f;
+        }
+        switch (rank)
+        {
+            default:
+                entryTransform.Find("troph").gameObject.SetActive(false);
+                break;
+            case 1:
+                entryTransform.Find("troph").gameObject.SetActive(true);
+                break;
+            case 2:
+                entryTransform.Find("troph").gameObject.SetActive(true);
+                entryTransform.Find("troph").gameObject.GetComponent<Image>().sprite = trophies[1];
+                break;
+            case 3:
+                entryTransform.Find("troph").gameObject.SetActive(true);
+                entryTransform.Find("troph").gameObject.GetComponent<Image>().sprite = trophies[2];
+                break;
+        }
+
         transfromList.Add(entryTransform);
     }
 
