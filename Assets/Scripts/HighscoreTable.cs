@@ -65,7 +65,7 @@ public class HighscoreTable : MonoBehaviour
 
     private void CreateHighscoreEntryTransfrom(HighscoreEntry highscoreEntry, Transform container, List<Transform> transfromList)
     {
-        float templateHeight = 25f;
+        float templateHeight = 36f;
         Transform entryTransform = Instantiate(entryTemplate, container);
 
         RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
@@ -79,7 +79,7 @@ public class HighscoreTable : MonoBehaviour
             default: rankString = rank + "TH"; break;
             case 1: rankString = "1ST"; break;
             case 2: rankString = "2ST"; break;
-            case 3: rankString = "3ST"; break;
+            case 3: rankString = "3RD"; break;
 
         }
         entryTransform.Find("posText").GetComponent<TextMeshProUGUI>().text = rankString;
@@ -98,15 +98,15 @@ public class HighscoreTable : MonoBehaviour
         }
         if (rank == 1)
         {
-            entryTransform.Find("posText").GetComponent<TextMeshProUGUI>().fontSize = 20f;
-            entryTransform.Find("scoreText").GetComponent<TextMeshProUGUI>().fontSize = 20f;
-            entryTransform.Find("nameText").GetComponent<TextMeshProUGUI>().fontSize = 20f;
+            entryTransform.Find("posText").GetComponent<TextMeshProUGUI>().fontSize = 29f;
+            entryTransform.Find("scoreText").GetComponent<TextMeshProUGUI>().fontSize = 29f;
+            entryTransform.Find("nameText").GetComponent<TextMeshProUGUI>().fontSize = 29f;
         }
         if (rank == 2)
         {
-            entryTransform.Find("posText").GetComponent<TextMeshProUGUI>().fontSize = 18f;
-            entryTransform.Find("scoreText").GetComponent<TextMeshProUGUI>().fontSize = 18f;
-            entryTransform.Find("nameText").GetComponent<TextMeshProUGUI>().fontSize = 18f;
+            entryTransform.Find("posText").GetComponent<TextMeshProUGUI>().fontSize = 27f;
+            entryTransform.Find("scoreText").GetComponent<TextMeshProUGUI>().fontSize = 27f;
+            entryTransform.Find("nameText").GetComponent<TextMeshProUGUI>().fontSize = 27f;
         }
         switch (rank)
         {
