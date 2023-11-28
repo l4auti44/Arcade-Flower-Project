@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1220794007531961098}
   - component: {fileID: 7338070904663060052}
   - component: {fileID: 8613017489778852687}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Beetle1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 7943863806508728898}
   - component: {fileID: 440893759067329061}
   - component: {fileID: 7864497087044296969}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: AnodesController
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 1991055126547792035}
   m_Layer: 0
   m_Name: Beetle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -774,7 +774,7 @@ GameObject:
   - component: {fileID: 4758287309744274407}
   m_Layer: 0
   m_Name: Beetle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -920,7 +920,7 @@ GameObject:
   - component: {fileID: 257130094240162551}
   m_Layer: 0
   m_Name: lightning
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1025,7 +1025,7 @@ GameObject:
   - component: {fileID: 4089098543825852242}
   - component: {fileID: 7715981467352939225}
   - component: {fileID: 7655108253836799323}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Beetle2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1210,6 +1210,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: watchout_UI_cursor
       objectReference: {fileID: 0}
+    - target: {fileID: 4746970426209276379, guid: dab7078188d2933438e3d861cf607e70, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8392989851592449303, guid: dab7078188d2933438e3d861cf607e70, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1275,6 +1279,10 @@ PrefabInstance:
     - target: {fileID: 4746970426209276379, guid: dab7078188d2933438e3d861cf607e70, type: 3}
       propertyPath: m_Name
       value: watchout_UI_cursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746970426209276379, guid: dab7078188d2933438e3d861cf607e70, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8392989851592449303, guid: dab7078188d2933438e3d861cf607e70, type: 3}
       propertyPath: m_Enabled

@@ -5169,6 +5169,10 @@ PrefabInstance:
       value: watchout_UI_cursor
       objectReference: {fileID: 0}
     - target: {fileID: 4746970426209276379, guid: dab7078188d2933438e3d861cf607e70, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746970426209276379, guid: dab7078188d2933438e3d861cf607e70, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -5249,6 +5253,10 @@ PrefabInstance:
     - target: {fileID: 4746970426209276379, guid: dab7078188d2933438e3d861cf607e70, type: 3}
       propertyPath: m_Name
       value: watchout_UI_cursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746970426209276379, guid: dab7078188d2933438e3d861cf607e70, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8392989851592449303, guid: dab7078188d2933438e3d861cf607e70, type: 3}
       propertyPath: m_Enabled

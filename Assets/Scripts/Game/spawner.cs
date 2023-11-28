@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class spawner : MonoBehaviour
 {
+    [HideInInspector] public static spawner Instance { get; private set; }
 
     public GameObject bullet;
     public GameObject bulletsParent;
@@ -25,11 +26,23 @@ public class spawner : MonoBehaviour
 
     static public int bulletAmount = 0;
 
-    private bool anodeBeetleSpawned = false;
-
-
-
     
+
+    private Vector2 cornerBottomLeft;
+    private Vector2 RightUpperCorner;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -92,8 +105,106 @@ public class spawner : MonoBehaviour
 
     public void ResetAnodeBeetle()
     {
-        anodeBeetleSpawned = false;
+
         _spawnTimeAnodeBeetle = spawnTimeAnodeBeetle;
+    }
+
+
+    public Vector3[] GetSpawnPositionOnBorderOfArea()
+    {
+        Vector3[] result = { Vector3.zero, Vector3.zero };
+        var offset = 0.5f;
+        bool valid = false;
+
+        while (valid != true)
+        {
+            
+            var randomX = UnityEngine.Random.Range(-GameManager.leftRightWall + offset, GameManager.leftRightWall - offset);
+            var randomY = UnityEngine.Random.Range(-GameManager.topBottom + offset, GameManager.topBottom - offset);
+
+            var randomWall = UnityEngine.Random.Range(0, 4);
+
+            switch (randomWall)
+            {
+                //top
+                case 0:
+                    if (CheckObjectInArea("Enemy", new Vector2(randomX - 0.7f, GameManager.topBottom), new Vector2(randomX + 0.8f, GameManager.topBottom + 10)))
+                    {
+                        break;
+                    }
+                    result[0] = new Vector3(randomX, GameManager.topBottom, 0f);
+                    break;
+                //bottom
+                case 1:
+                    if (CheckObjectInArea("Enemy", new Vector2(randomX + 0.7f, -GameManager.topBottom), new Vector2(randomX -0.8f, -GameManager.topBottom - 10)))
+                    {
+                        break;
+                    }
+                    result[1] = new Vector3(0, 0, 180f);
+                    result[0] = new Vector3(randomX, -GameManager.topBottom, 0f);
+                    break;
+
+                //left
+                case 2:
+                    if (CheckObjectInArea("Enemy", new Vector2(-GameManager.leftRightWall, randomY + 0.7f), new Vector2(-GameManager.leftRightWall -10, randomY - 0.8f)))
+                    {
+                        break;
+                    }
+                    result[1] = new Vector3(0, 0, 90f);
+                    result[0] = new Vector3(-GameManager.leftRightWall, randomY, 0f);
+                    break;
+
+                //right
+                case 3:
+                    if (CheckObjectInArea("Enemy", new Vector2(GameManager.leftRightWall, randomY - 0.7f), new Vector2(GameManager.leftRightWall + 10, randomY + 0.8f)))
+                    {
+                        break;
+                    }
+                    result[1] = new Vector3(0, 0, 270f);
+                    result[0] = new Vector3(GameManager.leftRightWall, randomY, 0f);
+                    break;
+
+            }
+            if (result[0] != Vector3.zero)
+            {
+                valid = true;
+            }
+        }
+
+        
+
+        return result;
+
+    }
+
+
+    public bool CheckObjectInArea(string tag, Vector2 cornerBottomLeftF, Vector2 RightUpperCornerF)
+    {
+        cornerBottomLeft = cornerBottomLeftF;
+        RightUpperCorner = RightUpperCornerF;
+
+
+        // Check if there is an object with the tag in the rectangular screen area
+        Collider2D[] objectsInArea = Physics2D.OverlapAreaAll(cornerBottomLeft, RightUpperCorner, LayerMask.GetMask("Default"));
+
+        // Iterate over the objects in the area and check if they have the specified tag
+        foreach (Collider2D _object in objectsInArea)
+        {
+            if (_object.CompareTag(tag))
+            {
+                Debug.Log("Find Enemy " + _object.name +" at " + _object.transform.position + ". Finding new position...");
+                return true; // Return true if an object with the tag is found in the area
+            }
+        }
+        //Debug.Log("Don't find enemy");
+        return false; // Return false if no object with the tag is found in the area
+    }
+
+    void OnDrawGizmos()
+    {
+        // Draw the rectangular area in the editor
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube((cornerBottomLeft + RightUpperCorner) / 2, new Vector3(Mathf.Abs(RightUpperCorner.x - cornerBottomLeft.x), Mathf.Abs(RightUpperCorner.y - cornerBottomLeft.y), 0));
     }
 
 }
