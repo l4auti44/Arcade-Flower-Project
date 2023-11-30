@@ -33,9 +33,9 @@ public class WateryBlowhog : Enemy
         splashCol.enabled = false;
         waterParticles.Stop();
 
-        Vector3[] positions = spawner.Instance.GetSpawnPositionOnBorderOfArea();
-        transform.position = positions[0];
-        transform.Rotate(positions[1]);
+        Dictionary<string, Vector3> positions = spawner.Instance.GetSpawnPositionOnBorderOfArea();
+        transform.position = positions["position"];
+        transform.Rotate(positions["rotation"]);
         
     }
 

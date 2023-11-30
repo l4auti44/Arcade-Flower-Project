@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -26,7 +27,7 @@ public class spawner : MonoBehaviour
 
     static public int bulletAmount = 0;
 
-    
+    private bool anodeBeetleSpawned = false;
 
     private Vector2 cornerBottomLeft;
     private Vector2 RightUpperCorner;
@@ -105,14 +106,17 @@ public class spawner : MonoBehaviour
 
     public void ResetAnodeBeetle()
     {
-
+        anodeBeetleSpawned = false;
         _spawnTimeAnodeBeetle = spawnTimeAnodeBeetle;
     }
 
 
-    public Vector3[] GetSpawnPositionOnBorderOfArea()
+    public Dictionary<string, Vector3> GetSpawnPositionOnBorderOfArea()
     {
-        Vector3[] result = { Vector3.zero, Vector3.zero };
+        Dictionary<string, Vector3> result = new Dictionary<string, Vector3>();
+        result.Add("position", Vector3.zero);
+        result.Add("rotation", Vector3.zero);
+        result.Add("positionOnArea", Vector3.zero);
         var offset = 0.5f;
         bool valid = false;
 
@@ -132,7 +136,8 @@ public class spawner : MonoBehaviour
                     {
                         break;
                     }
-                    result[0] = new Vector3(randomX, GameManager.topBottom, 0f);
+                    result["position"] = new Vector3(randomX, GameManager.topBottom, 0f);
+                    result["positionOnArea"] = Vector3.up;
                     break;
                 //bottom
                 case 1:
@@ -140,8 +145,9 @@ public class spawner : MonoBehaviour
                     {
                         break;
                     }
-                    result[1] = new Vector3(0, 0, 180f);
-                    result[0] = new Vector3(randomX, -GameManager.topBottom, 0f);
+                    result["rotation"] = new Vector3(0, 0, 180f);
+                    result["position"] = new Vector3(randomX, -GameManager.topBottom, 0f);
+                    result["positionOnArea"] = Vector3.down;
                     break;
 
                 //left
@@ -150,8 +156,9 @@ public class spawner : MonoBehaviour
                     {
                         break;
                     }
-                    result[1] = new Vector3(0, 0, 90f);
-                    result[0] = new Vector3(-GameManager.leftRightWall, randomY, 0f);
+                    result["rotation"] = new Vector3(0, 0, 90f);
+                    result["position"] = new Vector3(-GameManager.leftRightWall, randomY, 0f);
+                    result["positionOnArea"] = Vector3.left;
                     break;
 
                 //right
@@ -160,12 +167,13 @@ public class spawner : MonoBehaviour
                     {
                         break;
                     }
-                    result[1] = new Vector3(0, 0, 270f);
-                    result[0] = new Vector3(GameManager.leftRightWall, randomY, 0f);
+                    result["rotation"] = new Vector3(0, 0, 270f);
+                    result["position"] = new Vector3(GameManager.leftRightWall, randomY, 0f);
+                    result["positionOnArea"] = Vector3.right;
                     break;
 
             }
-            if (result[0] != Vector3.zero)
+            if (result["position"] != Vector3.zero)
             {
                 valid = true;
             }

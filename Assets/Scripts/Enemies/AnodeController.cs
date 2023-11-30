@@ -17,11 +17,7 @@ public class AnodeController : MonoBehaviour
     [SerializeField] private BoxCollider2D lightningBoxColl;
     [SerializeField] public int lightningDamage = 1;
 
-    // Start is called before the first frame update
-    private void Awake()
-    {
 
-    }
     void Start()
     {
         beetle2.SetActive(false);
@@ -69,61 +65,45 @@ public class AnodeController : MonoBehaviour
 
     private void SpawnPosition()
     {
-        var offset = 0.5f;
-        var randomX = UnityEngine.Random.Range(-GameManager.leftRightWall + offset, GameManager.leftRightWall - offset);
-        var randomY = UnityEngine.Random.Range(-GameManager.topBottom + offset, GameManager.topBottom - offset);
+        Dictionary<string, Vector3> positions = spawner.Instance.GetSpawnPositionOnBorderOfArea();
+        transform.position = positions["position"];
+        transform.Rotate(positions["rotation"]);
 
-        var randomWall = UnityEngine.Random.Range(0, 4);
-        var lightningSR = lightning.GetComponent<SpriteRenderer>();
-
-        bool leftRight = false;
-
-        switch (randomWall)
-        {
-            //left
-            case 0:
-                transform.position = new Vector3(-GameManager.leftRightWall, randomY, 0f);
-                beetle2.transform.position = new Vector3(GameManager.leftRightWall, randomY, 0f);
-                leftRight = true;
-                break;
-
-            //top
-            case 1:
-                transform.Rotate(new Vector3(0f, 0f, -90f));
-                transform.position = new Vector3(randomX, GameManager.topBottom, 0f);
-                beetle2.transform.position = new Vector3(randomX, -GameManager.topBottom - offset, 0f);
-                
-                break;
-            //bottom
-            case 2:
-                transform.Rotate(new Vector3(0f, 0f, 90f));
-                transform.position = new Vector3(randomX, -GameManager.topBottom, 0f);
-                beetle2.transform.position = new Vector3(randomX, GameManager.topBottom, 0f);
-                break;
-            //right
-            case 3:
-                leftRight = true;
-                transform.Rotate(new Vector3(0f, 0f, 180f));
-                transform.position = new Vector3(GameManager.leftRightWall, randomY, 0f);
-                beetle2.transform.position = new Vector3(-GameManager.leftRightWall, randomY, 0f);
-                break;
-        }
-
+        
         //LIGHTNING
         // TODO: MANUALLY HARD CODE THE OFFSET 10 and 4. IT WILL NOT WORK FOR OTHERS LEVELS! MAKE A VARIABLE
-        if (leftRight)
+        var lightningSR = lightning.GetComponent<SpriteRenderer>();
+
+        if (positions["positionOnArea"] == Vector3.left || positions["positionOnArea"] == Vector3.right)
         {
-            lightningBoxColl.size = new Vector3(lightningBoxColl.size.x * 10f, 1f, 0f);
-            lightningBoxColl.offset = new Vector3(GameManager.leftRightWall, 0f, 0f);
+            if (positions["positionOnArea"] == Vector3.left)
+            {
+                beetle2.transform.position = new Vector3(GameManager.leftRightWall, positions["position"].y, 0f);
+            }
+            else
+            {
+                beetle2.transform.position = new Vector3(-GameManager.leftRightWall, positions["position"].y, 0f);
+            }
+            lightningBoxColl.size = new Vector3(1f, lightningBoxColl.size.y * 10f, 0f);
+            lightningBoxColl.offset = new Vector3(0f, -GameManager.leftRightWall, 0f);
             lightning.transform.localPosition = new Vector2(0f, 0f);
             lightningSR.size = new Vector2(0.32f * 10f, lightningSR.size.y);
         }
         else
         {
-            lightningBoxColl.size = new Vector3(lightningBoxColl.size.x * 4f, 1f, 0f);
-            lightningBoxColl.offset = new Vector3(GameManager.topBottom, 0f, 0f);
+            if (positions["positionOnArea"] == Vector3.up)
+            {
+                beetle2.transform.position = new Vector3(positions["position"].x, -GameManager.topBottom, 0f);
+            }
+            else
+            {
+                beetle2.transform.position = new Vector3(positions["position"].x, GameManager.topBottom, 0f);
+            }
+            lightningBoxColl.size = new Vector3(1f, lightningBoxColl.size.y * 4f, 0f);
+            lightningBoxColl.offset = new Vector3(0f, -GameManager.topBottom, 0f);
             lightningSR.size = new Vector2(0.32f * 4f, lightningSR.size.y);
         }
+        
     }
 
     public void OneIsKilled (GameObject beetle)
