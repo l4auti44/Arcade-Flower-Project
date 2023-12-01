@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Breadbug : MonoBehaviour
 {
-    private float destroyAfter = 15f, distanceOffset = 1.5f;
+    private float destroyAfter = 15f;
+    public float distanceOffset = 1.5f;
     [SerializeField] private float speed = 0.5f, globalSpeedDragging = 1f;
     private Pellet _pellet;
     private bool backwards = false;
