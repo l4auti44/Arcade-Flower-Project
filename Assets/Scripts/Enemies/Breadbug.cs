@@ -11,7 +11,8 @@ public class Breadbug : MonoBehaviour
     private Pellet _pellet;
     private bool backwards = false;
     private Vector2 startGlobalPosition;
-    private float timer = 3.6f, timer2 = 2.85f, timer3 = 1f;
+    //TODO: Hard code timer: change it to the lenght of the animation
+    private float timer = 1.6f, timer2 = 2.85f, timer3 = 1f, timerForReaction = 0.6f;
     private bool killed = false;
     [SerializeField] private GameObject floatingPoints;
 
@@ -95,7 +96,6 @@ public class Breadbug : MonoBehaviour
         {
             if (!backwards && !flagDead)
             {
-                
                 transform.localPosition = Vector2.MoveTowards(transform.localPosition, targetPosition, Time.deltaTime * speed);
 
                 if (transform.localPosition == targetPosition)
@@ -109,7 +109,12 @@ public class Breadbug : MonoBehaviour
                 if (!flagDead)
                 {
                     //DRAGGING PELLET
-                    transform.parent.position = Vector2.MoveTowards(transform.parent.position, startGlobalPosition, Time.deltaTime * globalSpeedDragging);
+                    timerForReaction -= Time.deltaTime;
+                    if (timerForReaction < 0)
+                    {
+                        transform.parent.position = Vector2.MoveTowards(transform.parent.position, startGlobalPosition, Time.deltaTime * globalSpeedDragging);
+                    }
+                    
                 }
                 
             }
