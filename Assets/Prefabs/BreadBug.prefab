@@ -198,6 +198,7 @@ MonoBehaviour:
   globalSpeedDragging: 1
   floatingPoints: {fileID: 3921009216467326958, guid: 3f8643fb3f7267545998465d54e8b1e8, type: 3}
   pointsForKill: 25
+  pelletGrabbingOffset: 0.05
 --- !u!114 &1879619207790325728
 MonoBehaviour:
   m_ObjectHideFlags: 0

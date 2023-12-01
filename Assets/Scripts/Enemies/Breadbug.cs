@@ -16,6 +16,8 @@ public class Breadbug : MonoBehaviour
 
     [SerializeField] public int pointsForKill = 50;
     private bool flagMusic = false, flagDead = false;
+    private Vector3 targetPosition;
+    [SerializeField] private float pelletGrabbingOffset = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,28 +34,37 @@ public class Breadbug : MonoBehaviour
         {
             if (transform.parent.position.x > 0)
             {
+                //left
                 transform.localPosition = new Vector3(distanceOffset, 0f, 0f);
                 transform.Rotate(0f, 0f, -90f);
+                targetPosition = Vector3.zero - new Vector3(-pelletGrabbingOffset, 0f, 0f);
             }
             else
             {
+                //Right
                 transform.localPosition = new Vector3(-distanceOffset, 0f, 0f);
                 transform.Rotate(0f, 0f, 90f);
+                targetPosition = Vector3.zero - new Vector3(pelletGrabbingOffset, 0f, 0f);
             }
+            
 
         }
         else
         {
             if (transform.parent.position.y > 0)
             {
+                //top
                 transform.localPosition = new Vector3(0f, distanceOffset, 0f);
+                targetPosition = Vector3.zero - new Vector3(0f, -pelletGrabbingOffset, 0f);
             }
             else
             {
+                //bottom
                 transform.localPosition = new Vector3(0f, -distanceOffset, 0f);
                 transform.Rotate(0f, 0f, 180f);
+                targetPosition = Vector3.zero - new Vector3(0f, pelletGrabbingOffset, 0f);
             }
-
+            
         }
 
         startGlobalPosition = new Vector2(transform.position.x, transform.position.y);
@@ -72,10 +83,10 @@ public class Breadbug : MonoBehaviour
 
         if (_pellet.pelletTaken && !killed)
         {
-
             gameObject.GetComponentInChildren<Animator>().SetBool("pelletTaken", true);
             timer -= Time.deltaTime;
             if (timer <= 0)
+          
                 transform.parent.position = Vector2.MoveTowards(transform.parent.position, startGlobalPosition, Time.deltaTime * speed * 5);
 
         }
@@ -83,9 +94,10 @@ public class Breadbug : MonoBehaviour
         {
             if (!backwards && !flagDead)
             {
-                transform.localPosition = Vector2.MoveTowards(transform.localPosition, Vector2.zero, Time.deltaTime * speed);
+                
+                transform.localPosition = Vector2.MoveTowards(transform.localPosition, targetPosition, Time.deltaTime * speed);
 
-                if (transform.localPosition == Vector3.zero)
+                if (transform.localPosition == targetPosition)
                 {
                     backwards = true;
                     gameObject.GetComponentInChildren<Animator>().SetBool("backwards", true);
