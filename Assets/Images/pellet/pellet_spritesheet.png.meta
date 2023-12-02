@@ -141,10 +141,10 @@ TextureImporter:
       name: pellet_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 45
-        y: 45
-        width: 6
-        height: 6
+        x: 25
+        y: 41
+        width: 13
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,7 +163,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 45
-        y: 13
+        y: 45
         width: 6
         height: 6
       alignment: 0
@@ -175,6 +175,111 @@ TextureImporter:
       bones: []
       spriteID: 9d19dc2a619774a48bf72433756691e3
       internalID: 1498977492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pellet_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 24
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 906302a0fe3c7e84da7304eaf2e55877
+      internalID: -627976100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pellet_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 25
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67d5c4b461757b3479fdd7355a175d89
+      internalID: -8387850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pellet_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 25
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae519f8b64814c14d925bc4ed0b13fee
+      internalID: -586466888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pellet_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 7
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a61b7fc0fbe895498cb6f2d351a0849
+      internalID: 257937827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pellet_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 13
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65506d30b117a114faf2f299a88b8c64
+      internalID: 929884764
       vertices: []
       indices: 
       edges: []
@@ -191,7 +296,12 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       pellet_spritesheet_1: -1761022820
+      pellet_spritesheet_4: -8387850
+      pellet_spritesheet_6: 257937827
+      pellet_spritesheet_5: -586466888
       pellet_spritesheet_0: 478684019
+      pellet_spritesheet_3: -627976100
+      pellet_spritesheet_7: 929884764
       pellet_spritesheet_2: 1498977492
   spritePackingTag: 
   pSDRemoveMatte: 0
