@@ -17,15 +17,19 @@ public class AnodeController : MonoBehaviour
     [SerializeField] private BoxCollider2D lightningBoxColl;
     [SerializeField] public int lightningDamage = 1;
 
+    [SerializeField] private Sprite[] lightnings;
+    private SpriteRenderer lightningSR;
+    private Dictionary<string, Vector3> positions;
+
 
     void Start()
     {
         beetle2.SetActive(false);
-        lightning.SetActive(false);
+
         SpawnPosition();
         _beetle1 = beetle1.GetComponent<AnodesBeetles>();
         _beetle2 = beetle2.GetComponent<AnodesBeetles>();
-        
+
     }
 
     private void Update()
@@ -53,60 +57,103 @@ public class AnodeController : MonoBehaviour
             timerForConnect -= Time.deltaTime;
             if (timerForConnect <= 0)
             {
+
                 GetComponent<AudioManager>().PlaySound("Lightning");
                 lightning.SetActive(true);
                 lightningBoxColl.enabled = true;
                 connected = true;
+                if (positions["positionOnArea"] == Vector3.left || positions["positionOnArea"] == Vector3.right)
+                {
+                    lightning.GetComponent<Animator>().Play("flipY");
+                }
+                else
+                {
+                    lightning.GetComponent<Animator>().Play("flipX");
+                }
                 timerForConnect = 1000f;
+ 
             }
         }
+
+        
+
+      
+        
     }
 
 
     private void SpawnPosition()
     {
-        Dictionary<string, Vector3> positions = spawner.Instance.GetSpawnPositionOnBorderOfArea();
+        float offsetFromBorderTop = 1.22f;
+        positions = spawner.Instance.GetSpawnPositionOnBorderOfArea();
         transform.position = positions["position"];
         transform.Rotate(positions["rotation"]);
 
-        
+
         //LIGHTNING
         // TODO: MANUALLY HARD CODE THE OFFSET 10 and 4. IT WILL NOT WORK FOR OTHERS LEVELS! MAKE A VARIABLE
-        var lightningSR = lightning.GetComponent<SpriteRenderer>();
+        lightningSR = lightning.GetComponent<SpriteRenderer>();
+
+
+
 
         if (positions["positionOnArea"] == Vector3.left || positions["positionOnArea"] == Vector3.right)
         {
+
+
             if (positions["positionOnArea"] == Vector3.left)
             {
-                beetle2.transform.position = new Vector3(GameManager.leftRightWall, positions["position"].y, 0f);
+                beetle2.transform.position = new Vector3(GameManager.leftRightWall + (offsetFromBorderTop * 2), positions["position"].y, 0f);
+                lightning.transform.Rotate(new Vector3(0f, 0f, -90f));
+                transform.position -= new Vector3(offsetFromBorderTop, 0f, 0f);
+
             }
             else
             {
-                beetle2.transform.position = new Vector3(-GameManager.leftRightWall, positions["position"].y, 0f);
+                beetle2.transform.position = new Vector3(-GameManager.leftRightWall - (offsetFromBorderTop * 2), positions["position"].y, 0f);
+
+                transform.position += new Vector3(offsetFromBorderTop, 0f, 0f);
+                lightning.transform.Rotate(new Vector3(0, 0, -90));
             }
-            lightningBoxColl.size = new Vector3(1f, lightningBoxColl.size.y * 10f, 0f);
-            lightningBoxColl.offset = new Vector3(0f, -GameManager.leftRightWall, 0f);
-            lightning.transform.localPosition = new Vector2(0f, 0f);
-            lightningSR.size = new Vector2(0.32f * 10f, lightningSR.size.y);
+            lightningBoxColl.size = new Vector2(1f, lightningBoxColl.size.y * 10f);
+            lightningBoxColl.offset = new Vector2(0f, -GameManager.leftRightWall - 1.3f);
+            lightning.transform.localPosition = new Vector2(0, -0.5f);
+            lightningSR.sprite = lightnings[0]; //left
+
+
+         
         }
-        else
+        else //BOTTOM TOP
         {
+
+
             if (positions["positionOnArea"] == Vector3.up)
             {
-                beetle2.transform.position = new Vector3(positions["position"].x, -GameManager.topBottom, 0f);
+
+                beetle2.transform.position = new Vector3(positions["position"].x, -GameManager.topBottom - (offsetFromBorderTop * 2), 0f);
+                transform.position += new Vector3(0f, offsetFromBorderTop, 0f);
+                lightning.transform.Rotate(new Vector3(0, 0, 0));
             }
             else
             {
-                beetle2.transform.position = new Vector3(positions["position"].x, GameManager.topBottom, 0f);
+                beetle2.transform.position = new Vector3(positions["position"].x, GameManager.topBottom + (offsetFromBorderTop * 2), 0f);
+                transform.position -= new Vector3(0f, offsetFromBorderTop, 0f);
+
             }
-            lightningBoxColl.size = new Vector3(1f, lightningBoxColl.size.y * 4f, 0f);
-            lightningBoxColl.offset = new Vector3(0f, -GameManager.topBottom, 0f);
-            lightningSR.size = new Vector2(0.32f * 4f, lightningSR.size.y);
+            lightningBoxColl.size = new Vector2(1f, lightningBoxColl.size.y * 4f);
+            lightningBoxColl.offset = new Vector2(0f, -GameManager.topBottom - 1.3f);
+            lightning.transform.localPosition = new Vector2(0, -0.5f);
+            lightningSR.sprite = lightnings[1]; //Top
+
+
+
         }
-        
+
+        lightning.SetActive(false);
+
     }
 
-    public void OneIsKilled (GameObject beetle)
+    public void OneIsKilled(GameObject beetle)
     {
         GetComponent<AudioManager>().audioSource.enabled = false;
         connected = false;
@@ -121,7 +168,7 @@ public class AnodeController : MonoBehaviour
                 {
                     _beetle2.enableAreaAttack();
                 }
-                
+
             }
             else
             {
@@ -134,7 +181,7 @@ public class AnodeController : MonoBehaviour
             GameObject.Find("spawner").GetComponent<spawner>().ResetAnodeBeetle();
             Destroy(this, 4f);
         }
-        
+
     }
 
 }

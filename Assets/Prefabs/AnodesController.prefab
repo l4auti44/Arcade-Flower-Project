@@ -263,6 +263,9 @@ MonoBehaviour:
   connected: 0
   lightningBoxColl: {fileID: 7864497087044296969}
   lightningDamage: 1
+  lightnings:
+  - {fileID: 964383301, guid: 83de232a43057494b820f44d67411226, type: 3}
+  - {fileID: 414776407, guid: 83de232a43057494b820f44d67411226, type: 3}
 --- !u!114 &7943863806508728898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -917,7 +920,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4776869351718372013}
   - component: {fileID: 9053022808338085986}
-  - component: {fileID: 257130094240162551}
+  - component: {fileID: 8558649274459263736}
+  - component: {fileID: 3709620570689259480}
   m_Layer: 0
   m_Name: lightning
   m_TagString: Untagged
@@ -932,14 +936,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7929590455763183183}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5089199694721192619}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9053022808338085986
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -981,18 +985,18 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1001326867, guid: ea39c383c597373479a86fb38596e962, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.11, y: 1.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &257130094240162551
+--- !u!95 &8558649274459263736
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -1012,6 +1016,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3709620570689259480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7929590455763183183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9990f95510798bc4fa1b59737cc5072c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8558649274459263736}
 --- !u!1 &8814975382992147454
 GameObject:
   m_ObjectHideFlags: 0
