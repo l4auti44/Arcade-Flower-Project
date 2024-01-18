@@ -2046,13 +2046,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableBulletDifficulty: 1
-  bulletLimitTime: 120
-  bulletMinSpawnRate: 0.37
+  bulletLimitTime: 80
+  bulletMinSpawnRate: 0.4
   bulletDefaultSpeed: 3
-  bulletMaxSpeed: 4
+  bulletMaxSpeed: 3.5
   enableWateryDifficulty: 1
   wateryLimitTime: 120
-  wateryMinSpawnRate: 1
+  wateryMinSpawnRate: 1.85
 --- !u!1 &861251483
 GameObject:
   m_ObjectHideFlags: 0
