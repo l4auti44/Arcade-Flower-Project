@@ -14,7 +14,7 @@ public class AnodesBeetles : Enemy
     private AnodeController controller;
     private bool flag1 = false;
 
-    [SerializeField]private float timerDeath = 1f;
+    [SerializeField]private float timerDeath = 0.6f;
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();

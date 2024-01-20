@@ -12,7 +12,7 @@ public class Breadbug : MonoBehaviour
     private bool backwards = false;
     private Vector2 startGlobalPosition;
     //TODO: Hard code timer: change it to the lenght of the animation
-    private float timer = 1.6f, timer2 = 2.85f, timer3 = 1f, timerForReaction = 0.6f;
+    private float timer = 1.6f, timer2 = 2.85f, timer3 = 0.6f, timerForReaction = 0.6f;
     private bool killed = false;
     [SerializeField] private GameObject floatingPoints;
 

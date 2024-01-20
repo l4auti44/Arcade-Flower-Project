@@ -13,7 +13,7 @@ public class WateryBlowhog : Enemy
     private BoxCollider2D splashCol;
     private ParticleSystem waterParticles;
     private Animator wateryAnimator;
-    private float timer1 = 1f;
+    private float timer1 = 0.6f;
     private bool flagExit = false, flagdead = false;
 
     private float randomX, randomY;
