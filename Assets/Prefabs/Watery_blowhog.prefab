@@ -57,7 +57,7 @@ MonoBehaviour:
   floatingPoints: {fileID: 3921009216467326958, guid: 3f8643fb3f7267545998465d54e8b1e8, type: 3}
   startAtackAfter: 2.32
   atackDuration: 3
-  lifeTime: 8
+  lifeTime: 12
 --- !u!61 &7175369869452275688
 BoxCollider2D:
   m_ObjectHideFlags: 0
