@@ -160,7 +160,7 @@ public class AnodeController : MonoBehaviour
         isSecondOneSpawned = false;
         lightning.SetActive(false);
         lightningBoxColl.enabled = false;
-        if (beetle1 != null && beetle2 != null)
+        if (!_beetle1.killed || !_beetle2.killed)
         {
             if (beetle == beetle1)
             {
