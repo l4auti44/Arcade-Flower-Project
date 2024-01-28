@@ -2046,7 +2046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableBulletDifficulty: 1
-  bulletLimitTime: 180
+  bulletLimitTime: 150
   bulletMinSpawnRate: 0.345
   bulletDefaultSpeed: 3
   bulletMaxSpeed: 4
@@ -2342,7 +2342,7 @@ MonoBehaviour:
   pelletMeter: {fileID: 2126683471}
   left_right: 12.8
   top_bottom: 5.08
-  _pellets: 4
+  _pellets: 1
   pelletsSllider: {fileID: 1175575098}
   pointsToExtraLife: 4000
   pointsPerSecond: 10
@@ -5010,7 +5010,7 @@ PrefabInstance:
       objectReference: {fileID: 1484429114}
     - target: {fileID: 8648293815685476419, guid: cf014730ce9429b4c981bb7af63d0659, type: 3}
       propertyPath: health
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8648293815685476419, guid: cf014730ce9429b4c981bb7af63d0659, type: 3}
       propertyPath: restartMenu
