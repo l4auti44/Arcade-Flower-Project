@@ -51,9 +51,9 @@ MonoBehaviour:
   damage: 1
   health: 3
   killed: 0
-  pointsForKill: 300
+  pointsForKill: 350
   floatingPoints: {fileID: 3921009216467326958, guid: 3f8643fb3f7267545998465d54e8b1e8, type: 3}
-  startSlplashAttack: 2
+  startSlplashAttack: 3
   timerDeath: 1
 --- !u!58 &1220794007531961098
 CircleCollider2D:
@@ -256,9 +256,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beetle1: {fileID: 181573401936604708}
   beetle2: {fileID: 8814975382992147454}
-  timeToSpawnSecondBeetle: 5
+  timeToSpawnSecondBeetle: 7
   lightning: {fileID: 7929590455763183183}
-  timerForConnect: 3
+  timerForConnect: 3.3
   isSecondOneSpawned: 0
   connected: 0
   lightningBoxColl: {fileID: 7864497087044296969}
@@ -1080,9 +1080,9 @@ MonoBehaviour:
   damage: 1
   health: 3
   killed: 0
-  pointsForKill: 300
+  pointsForKill: 350
   floatingPoints: {fileID: 3921009216467326958, guid: 3f8643fb3f7267545998465d54e8b1e8, type: 3}
-  startSlplashAttack: 2
+  startSlplashAttack: 3
   timerDeath: 1
 --- !u!58 &4089098543825852242
 CircleCollider2D:

@@ -100,9 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breadbug: {fileID: 2890588012284470403, guid: 841275f6070892347933aee8fe66252f, type: 3}
-  timeForSpawnBreadbug: 1.61
+  timeForSpawnBreadbug: 1.59
   pelletTaken: 0
-  points: 5
+  points: 10
   floatingPoints: {fileID: 3921009216467326958, guid: 3f8643fb3f7267545998465d54e8b1e8, type: 3}
 --- !u!58 &7197753540995731971
 CircleCollider2D:
