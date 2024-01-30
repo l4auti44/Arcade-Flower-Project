@@ -7157,7 +7157,7 @@ MonoBehaviour:
   top_bottom: 5.08
   _pellets: 1
   pelletsSllider: {fileID: 1175575098}
-  pointsToExtraLife: 100
+  pointsToExtraLife: 3000
   pointsPerSecond: 10
 --- !u!82 &983517546
 AudioSource:
