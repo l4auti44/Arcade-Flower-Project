@@ -33,6 +33,7 @@ public class Health : MonoBehaviour
     public void IncreaseHealth(float amount)
     {
         health += amount;
+        transform.Find("HP_PS").GetComponent<ParticleSystem>().Play();
         refreshText();
     }
 
