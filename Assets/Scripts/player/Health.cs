@@ -34,6 +34,7 @@ public class Health : MonoBehaviour
     {
         health += amount;
         transform.Find("HP_PS").GetComponent<ParticleSystem>().Play();
+        GameObject.Find("HP_PS2").GetComponent<ParticleSystem>().Play();
         refreshText();
     }
 
