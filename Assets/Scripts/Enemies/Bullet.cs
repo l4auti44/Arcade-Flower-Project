@@ -18,8 +18,8 @@ public class Bullet : Enemy
     void Start()
     {
         var _spawner = GameObject.Find("spawner").GetComponent<spawner>();
-        xWalls = GameManager.leftRightWall + 3f;
-        yWalls = GameManager.topBottom + 3f;
+        xWalls = GameManager.leftRightWall + 5f;
+        yWalls = GameManager.topBottom + 5f;
 
         spawnPosition();
 
@@ -89,7 +89,7 @@ public class Bullet : Enemy
         transform.Translate(new Vector3(1, 0, 0) * speed * Time.deltaTime);
         
         
-        //Destroy out borders
+        //Destroy out of borders
         if (gameObject.transform.position.y > yWalls + 0.1f || gameObject.transform.position.y < -yWalls - 0.1f
             || gameObject.transform.position.x > xWalls + 0.1f || gameObject.transform.position.x < -xWalls - 0.1f)
         {

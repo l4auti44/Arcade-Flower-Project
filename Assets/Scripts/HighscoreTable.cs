@@ -11,6 +11,7 @@ public class HighscoreTable : MonoBehaviour
     private Transform entryTemplate;
     private List<Transform> highscoreEntryTransformList;
     [SerializeField] private Sprite[] trophies;
+    private bool alreadyGreen = false, flag = false;
 
 
     private void Awake()
@@ -90,8 +91,9 @@ public class HighscoreTable : MonoBehaviour
         entryTransform.Find("nameText").GetComponent<TextMeshProUGUI>().text = name;
 
         entryTransform.Find("Background").gameObject.SetActive(rank % 2 == 1);
-        if (highscoreEntry.score == GameManager.numberPoints)
+        if (highscoreEntry.score == GameManager.numberPoints && !alreadyGreen)
         {
+            alreadyGreen = true;
             entryTransform.Find("posText").GetComponent<TextMeshProUGUI>().color = Color.green;
             entryTransform.Find("scoreText").GetComponent<TextMeshProUGUI>().color = Color.green;
             entryTransform.Find("nameText").GetComponent<TextMeshProUGUI>().color = Color.green;
@@ -139,7 +141,19 @@ public class HighscoreTable : MonoBehaviour
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
         //Add new entry to highscores
-        highscores.highscoreEntryList.Add(highscoreEntry);
+        if (highscores.highscoreEntryList.Count > 10)
+        {
+            foreach (HighscoreEntry entry in highscores.highscoreEntryList)
+            {
+
+                if (GameManager.numberPoints > entry.score)
+                {
+                    highscores.highscoreEntryList.Add(highscoreEntry);
+                    break;
+                }
+            }
+        }
+        
 
         //Sort list
         SortListByScore(highscores);
@@ -166,25 +180,9 @@ public class HighscoreTable : MonoBehaviour
     {
         string jsonString = PlayerPrefs.GetString("highscoreTable");
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
+        AddHighscoreEntry(GameManager.numberPoints, GameManager.playerName);
 
-        if (highscores.highscoreEntryList.Count > 10)
-        {
-            foreach (HighscoreEntry highscoreEntry in highscores.highscoreEntryList)
-            {
-
-                if (GameManager.numberPoints > highscoreEntry.score)
-                {
-                    AddHighscoreEntry(GameManager.numberPoints, GameManager.playerName);
-                    
-                    break;
-                }
-
-            }
-        }
-        else
-        {
-            AddHighscoreEntry(GameManager.numberPoints, GameManager.playerName);
-        }
+        
 
     }
 
