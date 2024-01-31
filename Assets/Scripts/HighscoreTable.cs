@@ -153,8 +153,8 @@ public class HighscoreTable : MonoBehaviour
                 }
             }
         }
-        
 
+        highscores.highscoreEntryList.Add(highscoreEntry);
         //Sort list
         SortListByScore(highscores);
 
@@ -182,8 +182,13 @@ public class HighscoreTable : MonoBehaviour
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
         AddHighscoreEntry(GameManager.numberPoints, GameManager.playerName);
 
-        
+    }
 
+    public void LoadTable()
+    {
+        string jsonString = PlayerPrefs.GetString("highscoreTable");
+        Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
+        SortListByScore(highscores);
     }
 
 }
