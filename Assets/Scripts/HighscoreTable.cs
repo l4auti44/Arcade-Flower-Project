@@ -153,8 +153,12 @@ public class HighscoreTable : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            highscores.highscoreEntryList.Add(highscoreEntry);
+        }
 
-        highscores.highscoreEntryList.Add(highscoreEntry);
+        
         //Sort list
         SortListByScore(highscores);
 
