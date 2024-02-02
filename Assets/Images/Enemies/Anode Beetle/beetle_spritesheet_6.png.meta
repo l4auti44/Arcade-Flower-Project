@@ -108,10 +108,10 @@ TextureImporter:
       name: beetle_spritesheet_6_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 222
-        width: 24
-        height: 33
+        x: 3
+        y: 217
+        width: 26
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,9 +130,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 34
-        y: 222
+        y: 216
         width: 28
-        height: 34
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
