@@ -64,11 +64,13 @@ public class AnodesBeetles : Enemy
                 timerDeath -= Time.deltaTime;
                 if (timerDeath <= 0)
                 {
+                    disableAreaAttack();
+                    animator.SetBool("exit", true);
                     GetComponent<AudioManager>().audioSource.loop = false;
                     GetComponent<AudioManager>().PlaySound("Killed");
                     controller.OneIsKilled(this.gameObject);
                     flag1 = true;
-                    Destroy(gameObject, 2f);
+                    Destroy(gameObject, 4f);
                     timerDeath = 1000f;
                 }
                 
