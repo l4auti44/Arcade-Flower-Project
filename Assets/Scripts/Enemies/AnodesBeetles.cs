@@ -13,6 +13,7 @@ public class AnodesBeetles : Enemy
     public float startSlplashAttack = 2f;
     private AnodeController controller;
     private bool flag1 = false;
+    private float enterAnimation = 2.083f;
 
     [SerializeField]private float timerDeath = 0.6f;
     private void Awake()
@@ -27,6 +28,8 @@ public class AnodesBeetles : Enemy
 
     void Update()
     {
+        enterAnimation -= Time.deltaTime;
+
         if (!killed)
         {
 
@@ -96,14 +99,17 @@ public class AnodesBeetles : Enemy
     }
     public void enableAreaAttack() {
 
+        if (enterAnimation <= 0)
+        {
+            GetComponent<AudioManager>().PlaySound("AreaAttack");
 
-        GetComponent<AudioManager>().PlaySound("AreaAttack");
+
+            areaAttackSprite.enabled = true;
+            areaAttack.enabled = true;
+            animator.SetBool("areaAttack", true);
+            animator.SetBool("connect", false);
+        }
         
-        
-        areaAttackSprite.enabled = true;
-        areaAttack.enabled = true;
-        animator.SetBool("areaAttack", true);
-        animator.SetBool("connect", false);
         
         
 
