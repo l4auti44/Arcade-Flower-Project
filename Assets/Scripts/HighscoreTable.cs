@@ -16,8 +16,6 @@ public class HighscoreTable : MonoBehaviour
 
     private void Awake()
     {
-
-        
         entryContainer = transform.Find("HighscoreEntryContainer");
         entryTemplate = entryContainer.Find("HighscoreEntryTemplate");
 
@@ -25,8 +23,11 @@ public class HighscoreTable : MonoBehaviour
         var str = PlayerPrefs.GetString("highscoreTable");
         if (string.IsNullOrEmpty(str))
         {
+            
             //{"highscoreEntryList":[]}
-            PlayerPrefs.SetString("highscoreTable", "{\"highscoreEntryList\":[]}");
+            PlayerPrefs.SetString("highscoreTable", "{\"highscoreEntryList\":[{\"score\":26930,\"name\":\"Raime\"}" +
+                ",{\"score\":26890,\"name\":\"lauti44\"},{\"score\":16880,\"name\":\"Identity\"},{\"score\":11180,\"name\":\"The Bunny\"}" +
+                ",{\"score\":10975,\"name\":\"The Bull\"}]}");
         }
        
     }
